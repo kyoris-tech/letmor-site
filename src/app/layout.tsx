@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Italiana, Scope_One } from "next/font/google";
+import { Footer } from "@/components/composite/Footer";
 import { Navbar } from "@/components/composite/Navbar";
 import { WhatsAppButton } from "@/components/composite/WhatsAppButton";
 import "./globals.css";
@@ -90,6 +91,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="min-h-full flex flex-col">
         <Navbar />
         {children}
+        <Footer />
         <WhatsAppButton />
       </body>
     </html>

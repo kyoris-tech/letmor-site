@@ -61,14 +61,14 @@ export function Carousel({ images, interval = 3200, className }: CarouselProps) 
   return (
     <div
       className={cn(
-        "relative overflow-hidden rounded-[clamp(0.75rem,1.8vw,1.25rem)] bg-letmor-navy/10",
+        "relative aspect-[3/2] max-h-[42vh] w-full overflow-hidden rounded-[clamp(0.75rem,1.8vw,1.25rem)] bg-letmor-navy/10",
         className,
       )}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
       <div
-        className="flex aspect-[4/3] transition-transform duration-700 ease-out"
+        className="absolute inset-0 flex transition-transform duration-700 ease-out"
         style={{ transform: `translateX(-${index * 100}%)` }}
       >
         {images.map((image, i) => (

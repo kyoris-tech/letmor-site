@@ -18,10 +18,10 @@ export function Hero() {
     <section
       id={hero.id}
       data-nav-theme="dark"
-      className="relative flex h-svh min-h-[36rem] items-center overflow-hidden bg-letmor-navy pt-[var(--hero-nav-clear)] pb-8"
+      className="relative flex min-h-svh items-center bg-letmor-navy pt-[var(--hero-nav-clear)] pb-12 lg:overflow-hidden"
     >
       <Container size="hero" className="relative">
-        <Glow className="left-[var(--glow-left)] top-[var(--glow-top)]" />
+        <Glow className="left-[var(--glow-left)] top-[var(--glow-top)] hidden lg:block" />
 
         <TiltedCard className="absolute left-[var(--card-left)] top-1/2 hidden -translate-y-1/2 -mt-[var(--card-lift)] lg:block" />
 
@@ -64,6 +64,8 @@ export function Hero() {
               ))}
             </div>
           </Reveal>
+
+          <TiltedCard className="mx-auto mt-12 lg:hidden" />
         </div>
       </Container>
     </section>

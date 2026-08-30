@@ -4,6 +4,8 @@ export { CircleCheckIcon } from "./CircleCheckIcon";
 export { ChevronLeftIcon } from "./ChevronLeftIcon";
 export { ChevronRightIcon } from "./ChevronRightIcon";
 export { CloseIcon } from "./CloseIcon";
+export { InstagramIcon } from "./InstagramIcon";
+export { LinkedInIcon } from "./LinkedInIcon";
 export { MegaphoneIcon } from "./MegaphoneIcon";
 export { PaletteIcon } from "./PaletteIcon";
 export { PlayIcon } from "./PlayIcon";

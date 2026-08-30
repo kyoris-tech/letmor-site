@@ -1,5 +1,5 @@
 import { Section } from "@/components/composite/Section";
-import { Headline } from "@/components/ui/Headline";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 import { TextLink } from "@/components/ui/TextLink";
 import { PortfolioGallery } from "./PortfolioGallery";
 import { portfolio } from "./hotwords";
@@ -12,7 +12,7 @@ export function Portfolio() {
       theme="dark"
       fullHeight={false}
     >
-      <Headline as="h2" lines={portfolio.headline} />
+      <SectionHeading lines={portfolio.headline} tone="dark" />
 
       <PortfolioGallery />
 

@@ -1,4 +1,5 @@
 import { cn } from "@/lib/cn";
+import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { StarIcon } from "@/components/ui/icons";
 import type { Plan } from "@/components/screens/home/hotwords";
@@ -33,9 +34,9 @@ export function PlanCard({ plan, className }: PlanCardProps) {
       </p>
 
       {plan.badge && (
-        <span className="mt-4 inline-flex w-fit rounded-full bg-letmor-navy px-3 py-1 font-sans text-[0.68rem] font-bold tracking-wide text-letmor-cream-light">
+        <Badge tone="navy" className="mt-4">
           {plan.badge}
-        </span>
+        </Badge>
       )}
 
       <div className={cn("flex items-end gap-1.5", plan.badge ? "mt-5" : "mt-5 lg:mt-11")}>

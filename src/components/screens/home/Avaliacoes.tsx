@@ -1,12 +1,12 @@
 import { Section } from "@/components/composite/Section";
-import { Headline } from "@/components/ui/Headline";
 import { ReviewsCarousel } from "@/components/ui/ReviewsCarousel";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 import { avaliacoes } from "./hotwords";
 
 export function Avaliacoes() {
   return (
     <Section id={avaliacoes.id} eyebrow={avaliacoes.eyebrow} theme="light">
-      <Headline as="h2" lines={avaliacoes.headline} color="default" />
+      <SectionHeading lines={avaliacoes.headline} tone="light" />
 
       <div className="mt-[clamp(2.5rem,5vw,4rem)]">
         <ReviewsCarousel reviews={avaliacoes.testimonials} />

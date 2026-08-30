@@ -250,30 +250,48 @@ export const planos: SectionCopy & { plans: Plan[] } = {
     {
       name: "Social Start",
       tagline: "Para marcas começando",
-      price: "R$ 1000",
+      price: "R$ 1.000",
       period: "/mês",
-      description: "Texto descritivo do plano para os clientes.",
-      features: Array.from({ length: 5 }, () => "Item descritivo do plano"),
+      description:
+        "Gestão completa de redes sociais com direção estratégica: posicionamento, calendário de conteúdo e peças no tom da marca, com otimização contínua por métricas.",
+      features: [
+        "Gestão de redes sociais",
+        "Posicionamento da marca",
+        "Criação de conteúdo",
+        "Análise de métricas",
+        "Relatório mensal no WhatsApp",
+      ],
       cta: "Começar agora",
     },
     {
       name: "Social Estratégico",
-      tagline: "Para marcas começando",
-      price: "R$ 1000",
+      tagline: "Para marcas em crescimento",
+      price: "R$ 1.900",
       period: "/mês",
-      description: "Texto descritivo do plano para os clientes.",
-      features: Array.from({ length: 5 }, () => "Item descritivo do plano"),
+      description:
+        "Tudo do Start com uma camada de inteligência de mercado: estudo do setor, estratégia de conteúdo e reunião mensal para ler os dados e definir os próximos movimentos.",
+      features: [
+        "Tudo do Social Start",
+        "Estudo de mercado",
+        "Estratégia de conteúdo",
+        "Reunião mensal de análise e direção",
+      ],
       cta: "Começar agora",
       highlight: true,
       badge: "PLANO MAIS ESCOLHIDO",
     },
     {
       name: "Social Pro",
-      tagline: "Para marcas começando",
-      price: "R$ 1000",
+      tagline: "Para marcas escalando presença",
+      price: "R$ 3.200",
       period: "/mês",
-      description: "Texto descritivo do plano para os clientes.",
-      features: Array.from({ length: 5 }, () => "Item descritivo do plano"),
+      description:
+        "Tudo do Estratégico com captação de conteúdo inclusa e gestão de duas redes sociais, cada uma com estratégia própria.",
+      features: [
+        "Tudo do Social Estratégico",
+        "Captação de conteúdo",
+        "2 redes sociais com estratégias próprias",
+      ],
       cta: "Começar agora",
     },
   ],
@@ -362,7 +380,11 @@ export const contato: SectionCopy & {
 
 export const footer = {
   tagline: "Construindo experiências digitais com propósito.",
-  credit: "@2026 feito por Kyoris Tech",
+  credit: {
+    prefix: "@2026 feito por",
+    name: "Kyoris Tech",
+    href: "https://kyoristech.com",
+  },
   builtWith: "Desenvolvido com Next.js",
   columns: [
     [

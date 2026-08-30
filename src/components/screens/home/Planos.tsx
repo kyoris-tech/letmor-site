@@ -1,9 +1,9 @@
 "use client";
 
 import { Section } from "@/components/composite/Section";
-import { Headline } from "@/components/ui/Headline";
 import { PlanCard } from "@/components/ui/PlanCard";
 import { Reveal } from "@/components/ui/Reveal";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 import { TextLink } from "@/components/ui/TextLink";
 import { useInView } from "@/lib/useInView";
 import { planos } from "./hotwords";
@@ -22,7 +22,7 @@ export function Planos() {
       revealContent={false}
     >
       <Reveal>
-        <Headline as="h2" lines={planos.headline} />
+        <SectionHeading lines={planos.headline} tone="dark" />
       </Reveal>
 
       <div

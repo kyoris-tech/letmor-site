@@ -1,5 +1,6 @@
 import {
   Avaliacoes,
+  Contato,
   Hero,
   Planos,
   Portfolio,
@@ -16,6 +17,7 @@ export default function Home() {
       <Servicos />
       <Planos />
       <Avaliacoes />
+      <Contato />
     </main>
   );
 }
