@@ -1,0 +1,123 @@
+import type { Metadata } from "next";
+import { Inter, Scope_One } from "next/font/google";
+import localFont from "next/font/local";
+import { Footer } from "@/components/composite/Footer";
+import { Navbar } from "@/components/composite/Navbar";
+import { WhatsAppButton } from "@/components/composite/WhatsAppButton";
+import "./globals.css";
+
+const pierson = localFont({
+  variable: "--font-pierson",
+  display: "swap",
+  fallback: ["Georgia", "Times New Roman", "serif"],
+  src: [
+    { path: "./fonts/pierson-thin.ttf", weight: "100", style: "normal" },
+    { path: "./fonts/pierson-light.ttf", weight: "300", style: "normal" },
+    { path: "./fonts/pierson-regular.ttf", weight: "400", style: "normal" },
+  ],
+});
+
+const scopeOne = Scope_One({
+  variable: "--font-scope-one",
+  subsets: ["latin"],
+  weight: ["400"],
+});
+
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+});
+
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.agencialetmor.com";
+
+const SITE_TITLE = "LetMor | Agência de branding e design que conecta";
+const SITE_DESCRIPTION =
+  "A LetMor é uma agência de branding e design. Transformamos negócios com estratégia inteligente, direção criativa e soluções pensadas para gerar conexão, relevância e crescimento.";
+
+const SITE_KEYWORDS = [
+  "agência letmor",
+  "LetMor",
+  "agência de branding",
+  "agência de design",
+  "branding",
+  "identidade visual",
+  "naming",
+  "manual de marca",
+  "direção criativa",
+  "estratégia de marca",
+  "posicionamento de marca",
+  "design que conecta",
+  "gestão de redes sociais",
+  "social media estratégico",
+  "rebranding",
+  "agência criativa Brasil",
+];
+
+export const metadata: Metadata = {
+  metadataBase: new URL(BASE_URL),
+  title: SITE_TITLE,
+  description: SITE_DESCRIPTION,
+  keywords: SITE_KEYWORDS,
+  authors: [{ name: "Kyoris Tech" }],
+  alternates: {
+    canonical: BASE_URL,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  openGraph: {
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    url: BASE_URL,
+    siteName: "LetMor",
+    locale: "pt_BR",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+  },
+};
+
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "LetMor",
+  alternateName: "Agência LetMor",
+  url: BASE_URL,
+  logo: new URL("/images/logo.png", BASE_URL).toString(),
+  description: SITE_DESCRIPTION,
+  sameAs: [
+    "https://instagram.com/agencialetmor",
+    "https://linkedin.com/company/agencialetmor",
+  ],
+};
+
+export default function RootLayout({ children }: LayoutProps<"/">) {
+  return (
+    <html
+      lang="pt-BR"
+      className={`${pierson.variable} ${scopeOne.variable} ${inter.variable} h-full antialiased`}
+    >
+      <body className="min-h-full flex flex-col">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
+        <Navbar />
+        {children}
+        <Footer />
+        <WhatsAppButton />
+      </body>
+    </html>
+  );
+}

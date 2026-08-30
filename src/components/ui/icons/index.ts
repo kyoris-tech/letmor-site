@@ -1,0 +1,16 @@
+export { ArrowRightIcon } from "./ArrowRightIcon";
+export { ChatIcon } from "./ChatIcon";
+export { CircleCheckIcon } from "./CircleCheckIcon";
+export { ChevronLeftIcon } from "./ChevronLeftIcon";
+export { ChevronRightIcon } from "./ChevronRightIcon";
+export { CloseIcon } from "./CloseIcon";
+export { InstagramIcon } from "./InstagramIcon";
+export { LinkedInIcon } from "./LinkedInIcon";
+export { MegaphoneIcon } from "./MegaphoneIcon";
+export { MenuIcon } from "./MenuIcon";
+export { PaletteIcon } from "./PaletteIcon";
+export { PlayIcon } from "./PlayIcon";
+export { StarIcon } from "./StarIcon";
+export { TargetIcon } from "./TargetIcon";
+export { WhatsAppIcon } from "./WhatsAppIcon";
+export type { IconProps } from "./icon.types";
