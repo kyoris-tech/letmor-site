@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { footer } from "@/components/screens/home/hotwords";
 
@@ -33,12 +34,12 @@ export function Footer() {
               <ul key={column[0].href} className="flex flex-col gap-3">
                 {column.map((item) => (
                   <li key={item.href}>
-                    <a
+                    <Link
                       href={item.href}
                       className="font-subtitle text-body text-letmor-cream-light/70 transition-colors hover:text-letmor-cream-light"
                     >
                       {item.label}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>

@@ -1,4 +1,5 @@
 import type { ComponentPropsWithoutRef, ReactNode } from "react";
+import Link from "next/link";
 import { cn } from "@/lib/cn";
 import { ArrowRightIcon } from "@/components/ui/icons";
 
@@ -23,7 +24,7 @@ export function TextLink({
   ...rest
 }: TextLinkProps) {
   return (
-    <a
+    <Link
       href={href}
       className={cn(
         "group inline-flex w-fit items-center gap-x-[0.6em] font-subtitle text-nav underline decoration-1 underline-offset-[0.45em] transition-colors",
@@ -34,6 +35,6 @@ export function TextLink({
     >
       {children}
       <ArrowRightIcon className="size-[1.15em] shrink-0 transition-transform duration-300 group-hover:translate-x-1" />
-    </a>
+    </Link>
   );
 }

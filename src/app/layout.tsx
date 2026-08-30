@@ -88,6 +88,20 @@ export const metadata: Metadata = {
   },
 };
 
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "LetMor",
+  alternateName: "Agência LetMor",
+  url: BASE_URL,
+  logo: new URL("/images/logo.png", BASE_URL).toString(),
+  description: SITE_DESCRIPTION,
+  sameAs: [
+    "https://instagram.com/agencialetmor",
+    "https://linkedin.com/company/agencialetmor",
+  ],
+};
+
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
@@ -95,6 +109,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${pierson.variable} ${scopeOne.variable} ${inter.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
         <Navbar />
         {children}
         <Footer />

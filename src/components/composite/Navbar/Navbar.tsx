@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { Modal } from "@/components/ui/Modal";
 import { ArrowRightIcon, MenuIcon } from "@/components/ui/icons";
@@ -10,7 +11,9 @@ import { cn } from "@/lib/cn";
 import { useSectionSpy } from "@/lib/useSectionSpy";
 import { navCta, navItems } from "@/components/screens/home/hotwords";
 
-const SPY_IDS = navItems.map((item) => item.href.replace("#", ""));
+const sectionId = (href: string) => href.replace(/^.*#/, "");
+
+const SPY_IDS = navItems.map((item) => sectionId(item.href));
 
 export function Navbar() {
   const { activeId, theme } = useSectionSpy(SPY_IDS);
@@ -18,7 +21,7 @@ export function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const activeLabel =
-    navItems.find((item) => item.href.replace("#", "") === activeId)?.label ??
+    navItems.find((item) => sectionId(item.href) === activeId)?.label ??
     navItems[0].label;
 
   const closeMenu = () => setMenuOpen(false);
@@ -33,8 +36,8 @@ export function Navbar() {
             : "bg-letmor-cream-light/70 inset-ring-letmor-navy/15 shadow-[0_0.5rem_2rem_-0.5rem_rgba(35,49,73,0.18)] supports-[backdrop-filter]:bg-letmor-cream-light/60",
         )}
       >
-        <a
-          href="#inicio"
+        <Link
+          href="/#inicio"
           aria-label="LetMor — página inicial"
           className="relative block shrink-0"
         >
@@ -60,7 +63,7 @@ export function Navbar() {
               dark ? "opacity-0" : "opacity-100",
             )}
           />
-        </a>
+        </Link>
 
         <Text
           variant="nav"
@@ -72,11 +75,11 @@ export function Navbar() {
 
         <ul className="hidden items-center gap-nav-link-gap lg:flex">
           {navItems.map((item) => {
-            const active = activeId === item.href.replace("#", "");
+            const active = activeId === sectionId(item.href);
             return (
               <li key={item.href}>
                 <Text
-                  as="a"
+                  as={Link}
                   variant="nav"
                   href={item.href}
                   aria-current={active ? "true" : undefined}
@@ -95,6 +98,7 @@ export function Navbar() {
 
         <div className="hidden lg:contents">
           <Button
+            as={Link}
             href={navCta.href}
             variant="primary"
             size="sm"
@@ -124,10 +128,10 @@ export function Navbar() {
         <Modal label="Menu de navegação" onClose={closeMenu}>
           <ul className="flex flex-col gap-1">
             {navItems.map((item) => {
-              const active = activeId === item.href.replace("#", "");
+              const active = activeId === sectionId(item.href);
               return (
                 <li key={item.href}>
-                  <a
+                  <Link
                     href={item.href}
                     onClick={closeMenu}
                     aria-current={active ? "true" : undefined}
@@ -139,13 +143,14 @@ export function Navbar() {
                     )}
                   >
                     {item.label}
-                  </a>
+                  </Link>
                 </li>
               );
             })}
           </ul>
 
           <Button
+            as={Link}
             href={navCta.href}
             onClick={closeMenu}
             variant="primary"

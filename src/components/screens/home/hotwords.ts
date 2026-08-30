@@ -14,14 +14,14 @@ export interface SectionCopy {
 }
 
 export const navItems = [
-  { label: "Início", href: "#inicio" },
-  { label: "Sobre", href: "#sobre" },
-  { label: "Portfólio", href: "#portfolio" },
-  { label: "Serviços", href: "#servicos" },
-  { label: "Avaliações", href: "#avaliacoes" },
+  { label: "Início", href: "/#inicio" },
+  { label: "Sobre", href: "/#sobre" },
+  { label: "Portfólio", href: "/#portfolio" },
+  { label: "Serviços", href: "/#servicos" },
+  { label: "Avaliações", href: "/#avaliacoes" },
 ] as const;
 
-export const navCta = { label: "Fale Conosco", href: "#contato" } as const;
+export const navCta = { label: "Fale Conosco", href: "/#contato" } as const;
 
 export const hero: SectionCopy & {
   actions: { label: string; href: string }[];
@@ -60,7 +60,7 @@ export const sobre: SectionCopy & { steps: { number: string; label: string }[] }
     { number: "02", label: "Construção de Branding" },
     { number: "03", label: "Análise e evolução contínua" },
   ],
-  link: { label: "conheça nossos serviços", href: "#servicos" },
+  link: { label: "conheça nossos serviços", href: "/#servicos" },
 };
 
 export interface PortfolioFilter {
@@ -250,6 +250,251 @@ export const portfolio: SectionCopy & {
   ],
   link: { label: "explore o portfólio completo", href: "/portfolio" },
 };
+
+export const servicosHero: SectionCopy & {
+  actions: { label: string; href: string }[];
+  fronts: { number: string; label: string }[];
+} = {
+  id: "servicos-hero",
+  eyebrow: "serviços",
+  headline: [
+    [{ text: "Três frentes," }],
+    [{ text: "um mesmo" }],
+    [{ text: "compromisso:", accent: true }],
+    [{ text: "fazer sua" }],
+    [{ text: "marca" }, { text: "crescer.", accent: true }],
+  ],
+  body: [
+    "Soluções personalizadas para cada fase da sua empresa. Você escolhe o que precisa hoje e conta com a gente para apoiar os seus próximos passos.",
+  ],
+  actions: [
+    { label: "Ver Portfólio", href: "/#portfolio" },
+    { label: "Fale Conosco", href: "/#contato" },
+  ],
+  fronts: [
+    { number: "01", label: "Branding" },
+    { number: "02", label: "Social Media" },
+    { number: "03", label: "Audiovisual" },
+  ],
+};
+
+export interface ServiceOffer {
+  name?: string;
+  priceLabel?: string;
+  price: string;
+}
+
+export interface ServiceOfferGroup {
+  title: string;
+  offers: ServiceOffer[];
+}
+
+export interface ServiceDetail {
+  id: string;
+  index: string;
+  rail: string;
+  name: string;
+  nameLines?: HeadlineLine[];
+  body: string[];
+  deliverablesLabel: string;
+  deliverables: string[];
+  offers?: ServiceOffer[];
+  offerGroups?: ServiceOfferGroup[];
+  note?: string;
+  platformsLabel?: string;
+  platforms?: string[];
+  background: "cream" | "light";
+  cardTone: "cream" | "navy" | "gold";
+  cardPosition: "middle" | "end";
+  offerTone: "light" | "sand" | "navy";
+  photo?: { src: string; alt: string };
+}
+
+export const servicosDetalhes: ServiceDetail[] = [
+  {
+    id: "social-media",
+    index: "01",
+    rail: "Conteúdo",
+    name: "Social Media",
+    photo: {
+      src: "/images/portfolio/design/psi-amanda-lemos-1.jpg",
+      alt: "Social media — LetMor",
+    },
+    body: [
+      "Cuidamos da presença digital da sua marca de forma estratégica, transformando suas redes sociais em canais de relacionamento, posicionamento e geração de resultados.",
+      "Planejamos, criamos, publicamos e acompanhamos cada etapa para garantir um crescimento consistente e alinhado aos seus objetivos.",
+    ],
+    deliverablesLabel: "O que entregamos",
+    deliverables: [
+      "Estratégia e posicionamento de marca",
+      "Planejamento e calendário editorial",
+      "Criação de artes e conteúdos",
+      "Gerenciamento das redes sociais",
+      "Monitoramento de métricas e otimização de performance",
+      "Relatórios de desempenho",
+      "Reuniões mensais com análise de resultados e definição de novas estratégias",
+    ],
+    platformsLabel: "Plataformas",
+    platforms: ["LinkedIn", "Instagram", "Facebook", "TikTok", "Threads"],
+    offers: [{ priceLabel: "A partir de", price: "R$ 1.900,00" }],
+    background: "cream",
+    cardTone: "cream",
+    cardPosition: "middle",
+    offerTone: "light",
+  },
+  {
+    id: "branding",
+    index: "02",
+    rail: "Marca",
+    name: "Branding",
+    photo: {
+      src: "/images/portfolio/branding/vertco-1.jpg",
+      alt: "Branding — LetMor",
+    },
+    body: [
+      "Construímos identidades visuais que traduzem a essência da sua marca, fortalecem seu posicionamento e criam uma comunicação consistente em todos os pontos de contato com o público.",
+      "Do conceito à aplicação, desenvolvemos uma identidade profissional que transmite credibilidade, diferencia sua empresa no mercado e gera reconhecimento.",
+    ],
+    deliverablesLabel: "O que entregamos",
+    deliverables: [
+      "Logotipo com duas variações de cores",
+      "Identidade visual completa",
+      "Paleta de cores e tipografia",
+      "Aplicações da marca",
+      "Manual de identidade visual",
+      "Análise estratégica de perfil para redes sociais",
+      "Bio otimizada e sugestões de melhorias",
+      "Organização de destaques e capas",
+    ],
+    offers: [
+      { name: "Logotipo", priceLabel: "A partir de", price: "R$ 1.200,00" },
+      { name: "Identidade Visual", priceLabel: "A partir de", price: "R$ 2.000,00" },
+      { name: "Análise de Perfil", priceLabel: "A partir de", price: "R$ 450,00" },
+    ],
+    background: "light",
+    cardTone: "navy",
+    cardPosition: "end",
+    offerTone: "sand",
+  },
+  {
+    id: "design",
+    index: "03",
+    rail: "Gráfico",
+    name: "Design",
+    photo: {
+      src: "/images/portfolio/design/psicogames-1.jpg",
+      alt: "Design gráfico — LetMor",
+    },
+    body: [
+      "Criamos materiais gráficos que fortalecem a identidade da sua marca e garantem uma comunicação profissional, tanto no ambiente digital quanto no impresso.",
+      "Desenvolvemos peças personalizadas com foco em qualidade, impacto visual e alinhamento à identidade da sua empresa.",
+    ],
+    deliverablesLabel: "O que entregamos",
+    deliverables: [
+      "Cartões de visita personalizados",
+      "Folhetos e materiais promocionais",
+      "Artes para redes sociais e campanhas",
+      "Artes avulsas para impressão ou digital",
+      "Peças animadas para divulgação",
+      "Arquivos prontos para impressão e publicação",
+    ],
+    offerGroups: [
+      {
+        title: "Papelaria",
+        offers: [
+          { name: "Cartão de visita", priceLabel: "A partir de", price: "R$ 300,00" },
+          { name: "Folheto simples", priceLabel: "A partir de", price: "R$ 400,00" },
+        ],
+      },
+      {
+        title: "Design avulso",
+        offers: [
+          { name: "Arte avulsa", priceLabel: "A partir de", price: "R$ 80,00" },
+          { name: "Arte avulsa animada", priceLabel: "A partir de", price: "R$ 100,00" },
+        ],
+      },
+    ],
+    note: "Cartão de visita: 1000 unidades. Folheto simples: 100 unidades. Frete por conta do cliente.",
+    background: "cream",
+    cardTone: "cream",
+    cardPosition: "middle",
+    offerTone: "navy",
+  },
+  {
+    id: "audiovisual",
+    index: "04",
+    rail: "Marca",
+    name: "Audiovisual",
+    photo: {
+      src: "/images/portfolio/audiovisual/honeybee-projeto-2.jpg",
+      alt: "Audiovisual — LetMor",
+    },
+    body: [
+      "Transformamos momentos e ideias em conteúdos que aproximam sua marca do público. Produzimos vídeos dinâmicos e autênticos para fortalecer sua presença digital, destacar seus eventos e gerar mais engajamento nas redes sociais.",
+      "Da captação à edição, entregamos materiais prontos para publicação, permitindo que você foque no crescimento do seu negócio.",
+    ],
+    deliverablesLabel: "O que entregamos",
+    deliverables: [
+      "Cobertura de eventos",
+      "Captação de conteúdo para redes sociais",
+      "Produção de vídeos institucionais e promocionais",
+      "Edição profissional com trilha sonora, filtros e identidade visual",
+      "Vídeos de melhores momentos (highlights)",
+      "Conteúdo otimizado para Instagram, TikTok, LinkedIn e outras plataformas",
+    ],
+    offerGroups: [
+      {
+        title: "Storymaker",
+        offers: [
+          { name: "4 horas", priceLabel: "A partir de", price: "R$ 800,00" },
+          { name: "6 horas", priceLabel: "A partir de", price: "R$ 1.800,00" },
+          { name: "8 horas", priceLabel: "A partir de", price: "R$ 2.800,00" },
+        ],
+      },
+      {
+        title: "Captação de conteúdo",
+        offers: [
+          { name: "Até 3 horas", priceLabel: "A partir de", price: "R$ 600,00" },
+          { name: "Hora adicional", price: "R$ 100,00/hora" },
+        ],
+      },
+    ],
+    note: "Todo o material é entregue editado, com música, tratamento de imagem e identidade visual, pronto para publicação.",
+    background: "light",
+    cardTone: "gold",
+    cardPosition: "end",
+    offerTone: "sand",
+  },
+  {
+    id: "estudo-mercadologico",
+    index: "05",
+    rail: "Gráfico",
+    name: "Estudo Mercadológico",
+    nameLines: [[{ text: "Estudo" }], [{ text: "Mercadológico" }]],
+    photo: {
+      src: "/images/portfolio/design/clube-das-multis-1.jpg",
+      alt: "Estudo mercadológico — LetMor",
+    },
+    body: [
+      "Tomamos decisões com base em dados, não em suposições. Realizamos uma análise completa do mercado, da concorrência e do comportamento do público para identificar oportunidades e definir estratégias que impulsionem o crescimento da sua marca.",
+      "Ao final do estudo, entregamos um relatório estratégico com insights práticos para orientar o posicionamento e as ações do seu negócio.",
+    ],
+    deliverablesLabel: "O que entregamos",
+    deliverables: [
+      "Análise de mercado",
+      "Estudo da concorrência",
+      "Identificação do público-alvo",
+      "Mapeamento de tendências e oportunidades",
+      "Estratégias de posicionamento",
+      "Relatório completo com insights e recomendações",
+    ],
+    offers: [{ priceLabel: "A partir de", price: "R$ 2.000,00" }],
+    background: "cream",
+    cardTone: "cream",
+    cardPosition: "middle",
+    offerTone: "light",
+  },
+];
 
 export interface Service {
   id: string;
@@ -465,15 +710,15 @@ export const footer = {
   builtWith: "Desenvolvido com Next.js",
   columns: [
     [
-      { label: "Início", href: "#inicio" },
-      { label: "Portfólio", href: "#portfolio" },
-      { label: "Planos", href: "#planos" },
-      { label: "Contato", href: "#contato" },
+      { label: "Início", href: "/#inicio" },
+      { label: "Portfólio", href: "/#portfolio" },
+      { label: "Planos", href: "/#planos" },
+      { label: "Contato", href: "/#contato" },
     ],
     [
-      { label: "Sobre", href: "#sobre" },
-      { label: "Serviços", href: "#servicos" },
-      { label: "Avaliações", href: "#avaliacoes" },
+      { label: "Sobre", href: "/#sobre" },
+      { label: "Serviços", href: "/#servicos" },
+      { label: "Avaliações", href: "/#avaliacoes" },
     ],
   ],
 } as const;
