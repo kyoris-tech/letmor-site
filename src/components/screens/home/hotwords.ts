@@ -248,7 +248,6 @@ export const portfolio: SectionCopy & {
       ),
     },
   ],
-  link: { label: "explore o portfólio completo", href: "/portfolio" },
 };
 
 export const servicosHero: SectionCopy & {
@@ -423,7 +422,7 @@ export const servicosDetalhes: ServiceDetail[] = [
   {
     id: "audiovisual",
     index: "04",
-    rail: "Marca",
+    rail: "Vídeo",
     name: "Audiovisual",
     photo: {
       src: "/images/portfolio/audiovisual/honeybee-projeto-2.jpg",
@@ -468,7 +467,7 @@ export const servicosDetalhes: ServiceDetail[] = [
   {
     id: "estudo-mercadologico",
     index: "05",
-    rail: "Gráfico",
+    rail: "Mercado",
     name: "Estudo Mercadológico",
     nameLines: [[{ text: "Estudo" }], [{ text: "Mercadológico" }]],
     photo: {

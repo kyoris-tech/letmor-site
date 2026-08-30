@@ -11,7 +11,7 @@ interface UseInViewOptions {
 export function useInView<T extends HTMLElement>({
   once = true,
   rootMargin = "0px 0px -12% 0px",
-  threshold = 0.15,
+  threshold = 0,
 }: UseInViewOptions = {}) {
   const ref = useRef<T>(null);
   const [inView, setInView] = useState(false);

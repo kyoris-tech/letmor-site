@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 
 export type NavTheme = "dark" | "light";
 
@@ -10,17 +11,13 @@ interface SectionSpyState {
 }
 
 export function useSectionSpy(navIds: readonly string[]): SectionSpyState {
+  const pathname = usePathname();
   const [state, setState] = useState<SectionSpyState>({
     activeId: navIds[0] ?? null,
     theme: "dark",
   });
 
   useEffect(() => {
-    const themed = Array.from(
-      document.querySelectorAll<HTMLElement>("[data-nav-theme]"),
-    );
-    if (themed.length === 0) return;
-
     const navSet = new Set(navIds);
     const navHeight =
       parseFloat(
@@ -28,7 +25,9 @@ export function useSectionSpy(navIds: readonly string[]): SectionSpyState {
       ) || 60;
     const line = navHeight + 32;
 
+    let themed: HTMLElement[] = [];
     let frame = 0;
+    let retry = 0;
 
     const update = () => {
       frame = 0;
@@ -53,7 +52,19 @@ export function useSectionSpy(navIds: readonly string[]): SectionSpyState {
       if (!frame) frame = requestAnimationFrame(update);
     };
 
-    update();
+    const collect = () => {
+      themed = Array.from(
+        document.querySelectorAll<HTMLElement>("[data-nav-theme]"),
+      );
+      if (themed.length === 0 && retry < 10) {
+        retry += 1;
+        frame = requestAnimationFrame(collect);
+        return;
+      }
+      update();
+    };
+
+    collect();
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll);
 
@@ -62,7 +73,7 @@ export function useSectionSpy(navIds: readonly string[]): SectionSpyState {
       window.removeEventListener("resize", onScroll);
       if (frame) cancelAnimationFrame(frame);
     };
-  }, [navIds]);
+  }, [navIds, pathname]);
 
   return state;
 }

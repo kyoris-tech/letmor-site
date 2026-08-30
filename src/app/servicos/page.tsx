@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
-import { ServicosHero, ServiceDetail } from "@/components/screens/servicos";
+import {
+  ServicosHero,
+  ServiceDetail,
+  ResetHash,
+} from "@/components/screens/servicos";
 import { Contato } from "@/components/screens/home";
 import { servicosDetalhes } from "@/components/screens/home/hotwords";
 
@@ -31,6 +35,7 @@ export const metadata: Metadata = {
 export default function ServicosPage() {
   return (
     <main className="flex flex-1 flex-col">
+      <ResetHash />
       <ServicosHero />
       {servicosDetalhes.map((detail) => (
         <ServiceDetail key={detail.id} detail={detail} />
