@@ -13,6 +13,8 @@ const actionIcons = [
   <CircleCheckIcon key="check" className="size-full" />,
 ];
 
+const heroPhoto = { src: "/images/hero.jpeg", alt: "Trabalho da LetMor" };
+
 export function Hero() {
   return (
     <section
@@ -23,7 +25,10 @@ export function Hero() {
       <Container size="hero" className="relative">
         <Glow className="left-[var(--glow-left)] top-[var(--glow-top)] hidden lg:block" />
 
-        <TiltedCard className="absolute left-[var(--card-left)] top-1/2 hidden -translate-y-1/2 -mt-[var(--card-lift)] lg:block" />
+        <TiltedCard
+          photo={heroPhoto}
+          className="absolute left-[var(--card-left)] top-1/2 hidden -translate-y-1/2 mt-[var(--card-lift)] lg:block"
+        />
 
         <div className="relative lg:max-w-[42rem]">
           <Reveal>
@@ -65,7 +70,7 @@ export function Hero() {
             </div>
           </Reveal>
 
-          <TiltedCard className="mx-auto mt-12 lg:hidden" />
+          <TiltedCard photo={heroPhoto} className="mx-auto mt-12 lg:hidden" />
         </div>
       </Container>
     </section>

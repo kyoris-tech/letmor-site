@@ -1,14 +1,20 @@
 import type { Metadata } from "next";
-import { Inter, Italiana, Scope_One } from "next/font/google";
+import { Inter, Scope_One } from "next/font/google";
+import localFont from "next/font/local";
 import { Footer } from "@/components/composite/Footer";
 import { Navbar } from "@/components/composite/Navbar";
 import { WhatsAppButton } from "@/components/composite/WhatsAppButton";
 import "./globals.css";
 
-const italiana = Italiana({
-  variable: "--font-italiana",
-  subsets: ["latin"],
-  weight: ["400"],
+const pierson = localFont({
+  variable: "--font-pierson",
+  display: "swap",
+  fallback: ["Georgia", "Times New Roman", "serif"],
+  src: [
+    { path: "./fonts/pierson-thin.ttf", weight: "100", style: "normal" },
+    { path: "./fonts/pierson-light.ttf", weight: "300", style: "normal" },
+    { path: "./fonts/pierson-regular.ttf", weight: "400", style: "normal" },
+  ],
 });
 
 const scopeOne = Scope_One({
@@ -86,7 +92,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="pt-BR"
-      className={`${italiana.variable} ${scopeOne.variable} ${inter.variable} h-full antialiased`}
+      className={`${pierson.variable} ${scopeOne.variable} ${inter.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <Navbar />

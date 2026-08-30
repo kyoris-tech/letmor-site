@@ -71,7 +71,7 @@ export interface PortfolioFilter {
 export interface Project {
   id: string;
   name: string;
-  category: string;
+  categories: string[];
   type: string;
   subtype: string;
   description: string;
@@ -79,10 +79,10 @@ export interface Project {
   images: { src: string; alt: string }[];
 }
 
-const projectImages = (name: string, order: number[]) =>
-  order.map((n, i) => ({
-    src: `/images/portfolio/ph-${n}.jpg`,
-    alt: `${name} — imagem ${i + 1}`,
+const projectImages = (name: string, files: string[]) =>
+  files.map((file, index) => ({
+    src: `/images/portfolio/${file}`,
+    alt: `${name} — imagem ${index + 1}`,
   }));
 
 export const portfolio: SectionCopy & {
@@ -99,76 +99,153 @@ export const portfolio: SectionCopy & {
   filters: [
     { key: "todos", label: "Todos" },
     { key: "branding", label: "Branding" },
-    { key: "digital", label: "Digital" },
-    { key: "campanha", label: "Campanha" },
+    { key: "design", label: "Design" },
     { key: "audiovisual", label: "Audiovisual" },
   ],
   projects: [
     {
-      id: "projeto-1",
-      name: "Nome do projeto",
-      category: "branding",
+      id: "honeybee",
+      name: "Honeybee",
+      categories: ["branding", "design"],
+      type: "Branding",
+      subtype: "Design",
+      description:
+        "Identidade e desdobramentos de marca para a Honeybee, do conceito às aplicações digitais.",
+      tags: ["Identidade visual", "Design de conteúdo"],
+      images: projectImages("Honeybee", [
+        "branding/honeybee-1.jpg",
+        "branding/honeybee-2.jpg",
+        "branding/honeybee-3.jpg",
+        "branding/honeybee-4.jpg",
+        "design/honeybee-1.jpg",
+      ]),
+    },
+    {
+      id: "honeybee-audiovisual",
+      name: "Honeybee Audiovisual",
+      categories: ["audiovisual"],
+      type: "Audiovisual",
+      subtype: "Cobertura",
+      description:
+        "Registro audiovisual da Honeybee: cobertura de produção e bastidores em imagens.",
+      tags: ["Cobertura", "Fotografia", "Edição"],
+      images: projectImages("Honeybee Audiovisual", [
+        ...Array.from(
+          { length: 10 },
+          (_, i) => `audiovisual/honeybee-${i + 1}.jpg`,
+        ),
+        ...Array.from(
+          { length: 7 },
+          (_, i) => `audiovisual/honeybee-projeto-${i + 1}.jpg`,
+        ),
+      ]),
+    },
+    {
+      id: "letmor",
+      name: "LetMor",
+      categories: ["branding"],
       type: "Branding",
       subtype: "Identidade",
       description:
-        "Texto descritivo do projeto: contexto da marca, desafio de posicionamento e como a LetMor conduziu do briefing à entrega.",
-      tags: ["Naming", "Identidade visual", "Manual de marca"],
-      images: projectImages("Nome do projeto", [1, 2, 3, 4]),
+        "Construção da identidade da própria LetMor: marca, sistema visual e diretrizes verbais.",
+      tags: ["Naming", "Identidade visual", "Diretrizes verbais"],
+      images: projectImages("LetMor", [
+        "branding/letmor-1.jpg",
+        "branding/letmor-2.jpg",
+      ]),
     },
     {
-      id: "projeto-2",
-      name: "Nome do projeto",
-      category: "branding",
+      id: "glauber",
+      name: "Glauber Psicologia",
+      categories: ["branding"],
+      type: "Branding",
+      subtype: "Clínica",
+      description:
+        "Identidade e materiais para a clínica de psicologia Glauber, unindo acolhimento e clareza.",
+      tags: ["Identidade visual", "Material impresso"],
+      images: projectImages("Glauber Psicologia", ["branding/glauber-1.jpg"]),
+    },
+    {
+      id: "vertco",
+      name: "Vertco",
+      categories: ["branding"],
       type: "Branding",
       subtype: "Identidade",
       description:
-        "Texto descritivo do projeto: contexto da marca, desafio de posicionamento e como a LetMor conduziu do briefing à entrega.",
-      tags: ["Rebranding", "Direção de arte", "Diretrizes verbais"],
-      images: projectImages("Nome do projeto", [2, 3, 1]),
+        "Identidade visual e sistema de marca para a Vertco, com foco em consistência e escala.",
+      tags: ["Identidade visual", "Sistema de marca"],
+      images: projectImages("Vertco", [
+        "branding/vertco-1.jpg",
+        "branding/vertco-2.jpg",
+        "branding/vertco-3.jpg",
+      ]),
     },
     {
-      id: "projeto-3",
-      name: "Nome do projeto",
-      category: "digital",
-      type: "Digital",
+      id: "psi-amanda-lemos",
+      name: "Psi Amanda Lemos",
+      categories: ["design"],
+      type: "Design",
       subtype: "Social",
       description:
-        "Texto descritivo do projeto: estratégia de conteúdo, linha visual para redes e evolução dos indicadores ao longo da parceria.",
-      tags: ["Social media", "Conteúdo", "Design de posts"],
-      images: projectImages("Nome do projeto", [3, 4, 2]),
+        "Presença visual e conteúdo para a psicóloga Amanda Lemos nas redes sociais.",
+      tags: ["Social media", "Design de conteúdo"],
+      images: projectImages("Psi Amanda Lemos", [
+        "design/psi-amanda-lemos-1.jpg",
+        "design/psi-amanda-lemos-2.jpg",
+      ]),
     },
     {
-      id: "projeto-4",
-      name: "Nome do projeto",
-      category: "campanha",
-      type: "Campanha",
-      subtype: "Lançamento",
+      id: "clube-das-multis",
+      name: "Clube das Multis",
+      categories: ["design"],
+      type: "Design",
+      subtype: "Social",
       description:
-        "Texto descritivo do projeto: conceito criativo, desdobramento em peças on e offline e resultados da campanha de lançamento.",
-      tags: ["Conceito", "Key visual", "Mídia"],
-      images: projectImages("Nome do projeto", [4, 1, 3, 2]),
+        "Linha visual e design de conteúdo para a comunidade Clube das Multis.",
+      tags: ["Social media", "Direção de arte"],
+      images: projectImages("Clube das Multis", [
+        "design/clube-das-multis-1.jpg",
+      ]),
     },
     {
-      id: "projeto-5",
-      name: "Nome do projeto",
-      category: "audiovisual",
+      id: "clube-vinho",
+      name: "Clube Vinho",
+      categories: ["design"],
+      type: "Design",
+      subtype: "Rótulo",
+      description:
+        "Identidade e peças para o Clube Vinho, do conceito visual à comunicação.",
+      tags: ["Identidade visual", "Design de conteúdo"],
+      images: projectImages("Clube Vinho", ["design/clube-vinho-1.jpg"]),
+    },
+    {
+      id: "psicogames",
+      name: "Psicogames",
+      categories: ["design"],
+      type: "Design",
+      subtype: "Campanha",
+      description:
+        "Campanha e peças de divulgação do Psicogames para alcançar o público certo.",
+      tags: ["Campanha", "Design de conteúdo", "Direção de arte"],
+      images: projectImages("Psicogames", [
+        "design/psicogames-1.jpg",
+        "design/psicogames-2.jpg",
+        "design/psicogames-3.jpg",
+      ]),
+    },
+    {
+      id: "aniversario-amanda",
+      name: "Aniversário Amanda",
+      categories: ["audiovisual"],
       type: "Audiovisual",
-      subtype: "Vídeo",
+      subtype: "Evento",
       description:
-        "Texto descritivo do projeto: roteiro, direção e edição de peças audiovisuais para apresentar a marca ao público certo.",
-      tags: ["Roteiro", "Direção", "Edição"],
-      images: projectImages("Nome do projeto", [1, 4, 3]),
-    },
-    {
-      id: "projeto-6",
-      name: "Nome do projeto",
-      category: "branding",
-      type: "Branding",
-      subtype: "Identidade",
-      description:
-        "Texto descritivo do projeto: contexto da marca, desafio de posicionamento e como a LetMor conduziu do briefing à entrega.",
-      tags: ["Naming", "Identidade visual", "Aplicações"],
-      images: projectImages("Nome do projeto", [2, 1, 4]),
+        "Registro audiovisual do aniversário da Amanda: cobertura completa do evento em imagens.",
+      tags: ["Cobertura de evento", "Fotografia", "Edição"],
+      images: projectImages(
+        "Aniversário Amanda",
+        Array.from({ length: 14 }, (_, i) => `audiovisual/aniversario-amanda-${i + 1}.jpg`),
+      ),
     },
   ],
   link: { label: "explore o portfólio completo", href: "/portfolio" },
@@ -194,35 +271,35 @@ export const servicos: SectionCopy & { services: Service[] } = {
       name: "Branding",
       description:
         "Naming, identidade visual, manual de marca e diretrizes verbais que ficam de pé.",
-      image: "/images/services/sv-1.jpg",
+      image: "/images/portfolio/branding/vertco-2.jpg",
     },
     {
       id: "identidade-visual",
       name: "Identidade visual",
       description:
         "Sistema visual completo: logo, paleta, tipografia e aplicações prontas para escalar em qualquer canal.",
-      image: "/images/services/sv-2.jpg",
+      image: "/images/portfolio/branding/honeybee-1.jpg",
     },
     {
       id: "social-media",
       name: "Social media",
       description:
         "Estratégia de conteúdo e linha visual para redes, do planejamento à produção dos posts.",
-      image: "/images/services/sv-3.jpg",
+      image: "/images/portfolio/design/clube-vinho-1.jpg",
     },
     {
       id: "campanhas",
       name: "Campanhas",
       description:
         "Conceito criativo e key visual desdobrados em peças on e offline para lançar sua marca no momento certo.",
-      image: "/images/services/sv-4.jpg",
+      image: "/images/portfolio/design/psicogames-3.jpg",
     },
     {
       id: "audiovisual",
       name: "Audiovisual",
       description:
         "Roteiro, direção e edição de vídeos que apresentam a marca ao público certo com ritmo e intenção.",
-      image: "/images/services/sv-5.jpg",
+      image: "/images/portfolio/audiovisual/honeybee-3.jpg",
     },
   ],
 };

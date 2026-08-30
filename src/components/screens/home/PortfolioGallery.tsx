@@ -13,7 +13,9 @@ export function PortfolioGallery() {
   const projects =
     activeKey === "todos"
       ? portfolio.projects
-      : portfolio.projects.filter((project) => project.category === activeKey);
+      : portfolio.projects.filter((project) =>
+          project.categories.includes(activeKey),
+        );
 
   return (
     <div className="mt-[clamp(1.75rem,3.5vw,2.75rem)]">

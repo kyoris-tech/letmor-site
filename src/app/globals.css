@@ -31,15 +31,15 @@
   --text-color-cream: var(--letmor-cream);
   --text-color-white: #ffffff;
 
-  --fs-display: clamp(1.75rem, 4.051vw, 4.375rem);
+  --fs-display: clamp(1.625rem, 3.472vw, 3.75rem);
   --fs-eyebrow: clamp(0.8125rem, 1.013vw, 1.09375rem);
   --fs-lead: clamp(1rem, 1.099vw, 1.1875rem);
   --fs-body: clamp(0.9375rem, 0.93vw, 1.0625rem);
   --fs-step: clamp(1.25rem, 1.331vw, 1.4375rem);
-  --fs-project: clamp(1.25rem, 1.62vw, 1.75rem);
-  --fs-service: clamp(1.75rem, 2.9vw, 3.125rem);
-  --fs-plan-name: clamp(1.5rem, 2vw, 1.9375rem);
-  --fs-plan-price: clamp(2.75rem, 4.2vw, 3.75rem);
+  --fs-project: clamp(1.125rem, 1.39vw, 1.5rem);
+  --fs-service: clamp(1.5rem, 2.66vw, 2.875rem);
+  --fs-plan-name: clamp(1.375rem, 1.7vw, 1.6875rem);
+  --fs-plan-price: clamp(2.5rem, 3.6vw, 3.25rem);
   --fs-nav: clamp(0.875rem, 0.955vw, 1.03125rem);
   --fs-action: clamp(0.9375rem, 0.984vw, 1.0625rem);
   --fs-action-sm: clamp(0.8125rem, 0.839vw, 0.90625rem);
@@ -86,7 +86,7 @@
   --card-radius: clamp(0.75rem, 1.157vw, 1.25rem);
   --card-tilt: 4deg;
   --card-left: 64.93%;
-  --card-lift: clamp(0rem, 2vw, 2rem);
+  --card-lift: clamp(1rem, 3vw, 3rem);
 
   --glow-size: clamp(13rem, 26.62vw, 28.75rem);
   --glow-left: 93%;
@@ -100,7 +100,7 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 
-  --font-display: var(--font-italiana);
+  --font-display: var(--font-pierson);
   --font-subtitle: var(--font-scope-one);
   --font-sans: var(--font-inter);
 
@@ -181,6 +181,10 @@ body {
   background: var(--letmor-navy-deep);
   color: var(--foreground);
   font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+}
+
+.font-display {
+  font-weight: 300;
 }
 
 button:not(:disabled),
@@ -341,6 +345,24 @@ button:disabled {
   }
 }
 
+.polaroid-photo {
+  animation: polaroid-develop 2.2s ease-out 1.5s both;
+}
+
+@keyframes polaroid-develop {
+  0% {
+    opacity: 0;
+    filter: saturate(0) brightness(1.7) contrast(0.45) sepia(0.25);
+  }
+  18% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    filter: saturate(1) brightness(1) contrast(1) sepia(0);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -356,6 +378,7 @@ button:disabled {
   }
 
   .card-swing,
+  .polaroid-photo,
   .modal-backdrop,
   .modal-panel,
   [data-closing] .modal-backdrop,

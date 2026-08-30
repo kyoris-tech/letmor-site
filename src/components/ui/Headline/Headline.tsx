@@ -23,7 +23,7 @@ export function Headline({
   return (
     <Component
       className={cn(
-        "font-display text-display tracking-[0.028em]",
+        "font-display text-display tracking-[0.014em]",
         colorClassMap[color],
         className,
       )}

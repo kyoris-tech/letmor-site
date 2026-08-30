@@ -1,3 +1,6 @@
+"use client";
+
+import { useCallback, useRef } from "react";
 import Image from "next/image";
 import { cn } from "@/lib/cn";
 import type { Project } from "@/components/screens/home/hotwords";
@@ -10,11 +13,25 @@ interface ProjectCardProps {
 
 export function ProjectCard({ project, onSelect, className }: ProjectCardProps) {
   const cover = project.images[0];
+  const preloaded = useRef(false);
+
+  const preload = useCallback(() => {
+    if (preloaded.current || typeof window === "undefined") return;
+    preloaded.current = true;
+    for (const image of project.images) {
+      const loader = new window.Image();
+      loader.decoding = "async";
+      loader.src = image.src;
+    }
+  }, [project.images]);
 
   return (
     <button
       type="button"
       onClick={onSelect}
+      onPointerEnter={preload}
+      onTouchStart={preload}
+      onFocus={preload}
       aria-label={`Abrir projeto ${project.name}`}
       className={cn(
         "group flex w-full cursor-pointer flex-col text-left",

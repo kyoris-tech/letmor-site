@@ -63,15 +63,23 @@ export function ServiceCard({ service, active = false, className }: ServiceCardP
         active={active}
         className={cn(
           surface,
-          "relative order-first aspect-[16/10] overflow-hidden md:order-none md:aspect-auto",
+          "relative order-first aspect-[4/5] overflow-hidden bg-letmor-sand md:order-none md:aspect-auto",
         )}
       >
+        <Image
+          src={service.image}
+          alt=""
+          aria-hidden
+          fill
+          sizes="(min-width:768px) 22rem, 90vw"
+          className="scale-110 object-cover blur-2xl brightness-[0.8] saturate-150"
+        />
         <Image
           src={service.image}
           alt={`${service.name} — imagem ilustrativa`}
           fill
           sizes="(min-width:768px) 22rem, 90vw"
-          className="object-cover"
+          className="object-contain"
         />
       </SwingCard>
     </div>
