@@ -1,4 +1,5 @@
 import { cn } from "@/lib/cn";
+import { getWhatsAppUrl } from "@/lib/contact";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { StarIcon } from "@/components/ui/icons";
@@ -90,7 +91,11 @@ export function PlanCard({ plan, className }: PlanCardProps) {
       </ul>
 
       <Button
-        href="#contato"
+        href={getWhatsAppUrl(
+          `Olá! Vim pelo site da LetMor e quero começar com o plano ${plan.name}.`,
+        )}
+        target="_blank"
+        rel="noopener noreferrer"
         variant={highlight ? "solid" : "outline-navy"}
         size="lg"
         animated={false}

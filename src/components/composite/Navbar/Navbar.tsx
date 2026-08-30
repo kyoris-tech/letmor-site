@@ -58,6 +58,7 @@ export function Navbar() {
             aria-hidden
             width={1063}
             height={512}
+            priority
             className={cn(
               "absolute inset-0 h-nav-logo-h w-auto transition-opacity duration-500",
               dark ? "opacity-0" : "opacity-100",

@@ -35,6 +35,8 @@ export function Contato() {
           alt="LetMor"
           width={1063}
           height={512}
+          priority
+          sizes="(min-width: 1024px) 16rem, (min-width: 768px) 12rem, 10rem"
           className="h-20 w-auto max-w-full shrink-0 self-start md:-mt-2 md:h-24 lg:h-32"
         />
       </div>
