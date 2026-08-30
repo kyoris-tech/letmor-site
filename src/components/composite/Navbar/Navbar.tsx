@@ -1,8 +1,10 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/Button";
-import { ArrowRightIcon } from "@/components/ui/icons";
+import { Modal } from "@/components/ui/Modal";
+import { ArrowRightIcon, MenuIcon } from "@/components/ui/icons";
 import { Text } from "@/components/ui/Text";
 import { cn } from "@/lib/cn";
 import { useSectionSpy } from "@/lib/useSectionSpy";
@@ -13,6 +15,13 @@ const SPY_IDS = navItems.map((item) => item.href.replace("#", ""));
 export function Navbar() {
   const { activeId, theme } = useSectionSpy(SPY_IDS);
   const dark = theme === "dark";
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const activeLabel =
+    navItems.find((item) => item.href.replace("#", "") === activeId)?.label ??
+    navItems[0].label;
+
+  const closeMenu = () => setMenuOpen(false);
 
   return (
     <header className="fixed inset-x-0 top-nav-top z-50 flex justify-center px-5">
@@ -53,6 +62,14 @@ export function Navbar() {
           />
         </a>
 
+        <Text
+          variant="nav"
+          color={dark ? "white" : "default"}
+          className="max-w-[9rem] truncate px-1 lg:hidden"
+        >
+          {activeLabel}
+        </Text>
+
         <ul className="hidden items-center gap-nav-link-gap lg:flex">
           {navItems.map((item) => {
             const active = activeId === item.href.replace("#", "");
@@ -76,15 +93,70 @@ export function Navbar() {
           })}
         </ul>
 
-        <Button
-          href={navCta.href}
-          variant="primary"
-          size="sm"
-          icon={<ArrowRightIcon className="size-full" />}
+        <div className="hidden lg:contents">
+          <Button
+            href={navCta.href}
+            variant="primary"
+            size="sm"
+            icon={<ArrowRightIcon className="size-full" />}
+          >
+            {navCta.label}
+          </Button>
+        </div>
+
+        <button
+          type="button"
+          aria-label="Abrir menu"
+          aria-expanded={menuOpen}
+          onClick={() => setMenuOpen(true)}
+          className={cn(
+            "flex size-nav-cta-h shrink-0 items-center justify-center rounded-full transition-colors lg:hidden",
+            dark
+              ? "bg-letmor-cream-light/10 text-letmor-cream-light"
+              : "bg-letmor-navy/10 text-letmor-navy",
+          )}
         >
-          {navCta.label}
-        </Button>
+          <MenuIcon className="size-5" />
+        </button>
       </nav>
+
+      {menuOpen && (
+        <Modal label="Menu de navegação" onClose={closeMenu}>
+          <ul className="flex flex-col gap-1">
+            {navItems.map((item) => {
+              const active = activeId === item.href.replace("#", "");
+              return (
+                <li key={item.href}>
+                  <a
+                    href={item.href}
+                    onClick={closeMenu}
+                    aria-current={active ? "true" : undefined}
+                    className={cn(
+                      "block rounded-2xl px-4 py-3 font-subtitle text-lead transition-colors",
+                      active
+                        ? "bg-letmor-sand text-letmor-gold-deep"
+                        : "text-letmor-navy hover:bg-letmor-navy/5",
+                    )}
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+
+          <Button
+            href={navCta.href}
+            onClick={closeMenu}
+            variant="primary"
+            size="lg"
+            icon={<ArrowRightIcon className="size-full" />}
+            className="mt-6 w-full"
+          >
+            {navCta.label}
+          </Button>
+        </Modal>
+      )}
     </header>
   );
 }

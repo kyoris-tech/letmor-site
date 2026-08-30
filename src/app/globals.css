@@ -44,10 +44,10 @@
   --fs-action: clamp(0.9375rem, 0.984vw, 1.0625rem);
   --fs-action-sm: clamp(0.8125rem, 0.839vw, 0.90625rem);
 
-  --gap-eyebrow: clamp(0.375rem, 1.013vw, 1.09375rem);
-  --gap-title: clamp(1.25rem, 3.645vw, 3.9375rem);
-  --gap-lead: clamp(1.5rem, 4.05vw, 4.375rem);
-  --gap-actions: clamp(0.625rem, 1.852vw, 2rem);
+  --gap-eyebrow: clamp(0.75rem, 1.7vw, 1.75rem);
+  --gap-title: clamp(1.75rem, 4.4vw, 4.75rem);
+  --gap-lead: clamp(2.25rem, 5.4vw, 5.75rem);
+  --gap-actions: clamp(0.875rem, 2.1vw, 2.25rem);
   --lead-max: clamp(18rem, 29.05vw, 31.25rem);
 
   --section-py: clamp(4.5rem, 8.5vw, 9rem);
@@ -174,10 +174,11 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: calc(var(--nav-top) + var(--nav-h) + 1rem);
+  background-color: var(--letmor-navy-deep);
 }
 
 body {
-  background: var(--background);
+  background: var(--letmor-navy-deep);
   color: var(--foreground);
   font-family: var(--font-inter), Arial, Helvetica, sans-serif;
 }

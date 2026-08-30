@@ -28,6 +28,10 @@ export function StackCards({ items, className }: StackCardsProps) {
 
     const update = () => {
       frame = 0;
+      if (window.innerWidth < 1024) {
+        setActiveIndex((prev) => (prev === -1 ? prev : -1));
+        return;
+      }
       let next = -1;
       for (let i = 0; i < cards.length; i += 1) {
         const target = parseFloat(getComputedStyle(cards[i]).top) || 0;
@@ -54,12 +58,15 @@ export function StackCards({ items, className }: StackCardsProps) {
   return (
     <ul
       ref={listRef}
-      className={cn("flex flex-col gap-[var(--stack-gap)]", className)}
+      className={cn(
+        "flex flex-col gap-[clamp(1.75rem,5vw,2.5rem)] lg:gap-[var(--stack-gap)]",
+        className,
+      )}
     >
       {items.map((item, index) => (
         <li
           key={item.key}
-          className="sticky"
+          className="lg:sticky"
           style={{
             top: `calc(var(--stack-top) + ${index} * var(--stack-step))`,
           }}

@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useRef, type ReactNode } from "react";
+import { useEffect, useRef, type CSSProperties, type ReactNode } from "react";
+import { cn } from "@/lib/cn";
 
 interface SwingCardProps {
   tilt: number;
@@ -23,7 +24,7 @@ export function SwingCard({ tilt, active, className, children }: SwingCardProps)
       ).matches;
       const onScreen = el.getBoundingClientRect().top < window.innerHeight;
 
-      if (!reduced && onScreen) {
+      if (!reduced && onScreen && window.innerWidth >= 1024) {
         animationRef.current?.cancel();
         animationRef.current = el.animate(
           [
@@ -42,7 +43,11 @@ export function SwingCard({ tilt, active, className, children }: SwingCardProps)
   }, [active, tilt]);
 
   return (
-    <div ref={ref} className={className} style={{ transform: `rotate(${tilt}deg)` }}>
+    <div
+      ref={ref}
+      className={cn("lg:[transform:rotate(var(--swing-tilt))]", className)}
+      style={{ "--swing-tilt": `${tilt}deg` } as CSSProperties}
+    >
       {children}
     </div>
   );
