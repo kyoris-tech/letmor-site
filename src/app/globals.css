@@ -1,0 +1,294 @@
+@import "tailwindcss";
+
+:root {
+  --letmor-navy: #233149;
+  --letmor-navy-deep: #1a2536;
+  --letmor-navy-light: #2f4368;
+
+  --letmor-gold: #b18335;
+  --letmor-gold-soft: #c99c53;
+  --letmor-gold-deep: #8f6725;
+
+  --letmor-cream: #ede4c9;
+  --letmor-cream-light: #fdf9f2;
+  --letmor-sand: #f2ebd8;
+
+  --background: var(--letmor-cream-light);
+  --foreground: var(--letmor-navy);
+
+  --color-primary: var(--letmor-navy);
+  --color-primary-light: var(--letmor-navy-light);
+  --color-secondary: var(--letmor-gold);
+  --color-secondary-light: var(--letmor-gold-soft);
+  --color-accent: var(--letmor-gold);
+  --color-surface: var(--letmor-cream);
+  --color-surface-light: var(--letmor-cream-light);
+
+  --text-color-default: var(--letmor-navy);
+  --text-color-muted: #23314999;
+  --text-color-accent: var(--letmor-gold);
+  --text-color-inverse: var(--letmor-cream-light);
+  --text-color-cream: var(--letmor-cream);
+  --text-color-white: #ffffff;
+
+  --fs-display: clamp(1.75rem, 4.051vw, 4.375rem);
+  --fs-eyebrow: clamp(0.8125rem, 1.013vw, 1.09375rem);
+  --fs-lead: clamp(1rem, 1.099vw, 1.1875rem);
+  --fs-body: clamp(0.9375rem, 0.93vw, 1.0625rem);
+  --fs-step: clamp(1.25rem, 1.331vw, 1.4375rem);
+  --fs-project: clamp(1.25rem, 1.62vw, 1.75rem);
+  --fs-service: clamp(1.75rem, 2.9vw, 3.125rem);
+  --fs-plan-name: clamp(1.5rem, 2vw, 1.9375rem);
+  --fs-plan-price: clamp(2.75rem, 4.2vw, 3.75rem);
+  --fs-nav: clamp(0.875rem, 0.955vw, 1.03125rem);
+  --fs-action: clamp(0.9375rem, 0.984vw, 1.0625rem);
+  --fs-action-sm: clamp(0.8125rem, 0.839vw, 0.90625rem);
+
+  --gap-eyebrow: clamp(0.375rem, 1.013vw, 1.09375rem);
+  --gap-title: clamp(1.25rem, 3.645vw, 3.9375rem);
+  --gap-lead: clamp(1.5rem, 4.05vw, 4.375rem);
+  --gap-actions: clamp(0.625rem, 1.852vw, 2rem);
+  --lead-max: clamp(18rem, 29.05vw, 31.25rem);
+
+  --section-py: clamp(4.5rem, 8.5vw, 9rem);
+  --section-gap: clamp(2.25rem, 5vw, 5rem);
+
+  --stack-top: calc(
+    var(--nav-top) + var(--nav-h) + clamp(1rem, 3vw, 2.5rem)
+  );
+  --stack-step: clamp(0.55rem, 1.2vw, 1.1rem);
+  --stack-gap: clamp(11rem, 36vh, 22rem);
+  --stack-card-min: clamp(21rem, 52vh, 33rem);
+
+  --hero-nav-clear: calc(
+    var(--nav-top) + var(--nav-h) + clamp(0.5rem, 1.5vw, 1.25rem)
+  );
+
+  --btn-h: clamp(2.75rem, 2.894vw, 3.125rem);
+  --btn-px: clamp(1rem, 1.042vw, 1.125rem);
+  --btn-px-outline: clamp(1.125rem, 1.157vw, 1.25rem);
+  --btn-gap: clamp(0.375rem, 0.579vw, 0.625rem);
+  --btn-icon: clamp(0.875rem, 0.926vw, 1rem);
+
+  --nav-top: clamp(0.625rem, 1.099vw, 1.1875rem);
+  --nav-h: clamp(3rem, 3.472vw, 3.75rem);
+  --nav-pl: clamp(0.75rem, 1.042vw, 1.125rem);
+  --nav-pr: clamp(0.375rem, 0.579vw, 0.625rem);
+  --nav-gap: clamp(0.5rem, 0.926vw, 1rem);
+  --nav-link-gap: clamp(0.875rem, 1.505vw, 1.625rem);
+  --nav-logo-h: clamp(1.25rem, 2.199vw, 2.375rem);
+  --nav-cta-h: clamp(2rem, 2.199vw, 2.375rem);
+  --nav-cta-px: clamp(0.625rem, 0.81vw, 0.875rem);
+  --nav-cta-icon: clamp(0.75rem, 0.81vw, 0.875rem);
+
+  --card-w: clamp(11rem, 19.85vw, 21.4375rem);
+  --card-ratio: 490 / 637;
+  --card-radius: clamp(0.75rem, 1.157vw, 1.25rem);
+  --card-tilt: 4deg;
+  --card-left: 64.93%;
+  --card-lift: clamp(0rem, 2vw, 2rem);
+
+  --glow-size: clamp(13rem, 26.62vw, 28.75rem);
+  --glow-left: 93%;
+  --glow-top: clamp(1.5rem, 5.5vw, 6rem);
+
+  --container-page: 70rem;
+  --container-hero: 68rem;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --font-display: var(--font-italiana);
+  --font-subtitle: var(--font-scope-one);
+  --font-sans: var(--font-inter);
+
+  --text-display: var(--fs-display);
+  --text-display--line-height: 1;
+  --text-eyebrow: var(--fs-eyebrow);
+  --text-eyebrow--line-height: 1;
+  --text-lead: var(--fs-lead);
+  --text-lead--line-height: 1.4;
+  --text-body: var(--fs-body);
+  --text-body--line-height: 1.6;
+  --text-step: var(--fs-step);
+  --text-step--line-height: 1;
+  --text-project: var(--fs-project);
+  --text-project--line-height: 1.1;
+  --text-service: var(--fs-service);
+  --text-service--line-height: 1.05;
+  --text-plan-name: var(--fs-plan-name);
+  --text-plan-name--line-height: 1.1;
+  --text-plan-price: var(--fs-plan-price);
+  --text-plan-price--line-height: 1;
+  --text-nav: var(--fs-nav);
+  --text-nav--line-height: 1;
+  --text-action: var(--fs-action);
+  --text-action--line-height: 1;
+  --text-action-sm: var(--fs-action-sm);
+  --text-action-sm--line-height: 1;
+
+  --color-letmor-navy: var(--letmor-navy);
+  --color-letmor-navy-deep: var(--letmor-navy-deep);
+  --color-letmor-navy-light: var(--letmor-navy-light);
+  --color-letmor-gold: var(--letmor-gold);
+  --color-letmor-gold-soft: var(--letmor-gold-soft);
+  --color-letmor-gold-deep: var(--letmor-gold-deep);
+  --color-letmor-cream: var(--letmor-cream);
+  --color-letmor-cream-light: var(--letmor-cream-light);
+  --color-letmor-sand: var(--letmor-sand);
+
+  --color-primary: var(--color-primary);
+  --color-primary-light: var(--color-primary-light);
+  --color-secondary: var(--color-secondary);
+  --color-secondary-light: var(--color-secondary-light);
+  --color-accent: var(--color-accent);
+  --color-surface: var(--color-surface);
+  --color-surface-light: var(--color-surface-light);
+
+  --spacing-eyebrow: var(--gap-eyebrow);
+  --spacing-title: var(--gap-title);
+  --spacing-lead: var(--gap-lead);
+  --spacing-actions: var(--gap-actions);
+  --spacing-section: var(--section-py);
+  --spacing-section-gap: var(--section-gap);
+
+  --spacing-btn-h: var(--btn-h);
+  --spacing-btn-px: var(--btn-px);
+  --spacing-btn-gap: var(--btn-gap);
+  --spacing-btn-icon: var(--btn-icon);
+
+  --spacing-nav-top: var(--nav-top);
+  --spacing-nav-h: var(--nav-h);
+  --spacing-nav-pl: var(--nav-pl);
+  --spacing-nav-pr: var(--nav-pr);
+  --spacing-nav-gap: var(--nav-gap);
+  --spacing-nav-link-gap: var(--nav-link-gap);
+  --spacing-nav-logo-h: var(--nav-logo-h);
+  --spacing-nav-cta-h: var(--nav-cta-h);
+  --spacing-nav-cta-px: var(--nav-cta-px);
+  --spacing-nav-cta-icon: var(--nav-cta-icon);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--nav-top) + var(--nav-h) + 1rem);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+}
+
+.container-page {
+  width: min(100% - 2.5rem, var(--container-page));
+  margin-inline: auto;
+}
+
+.container-hero {
+  width: min(100% - 2.5rem, var(--container-hero));
+  margin-inline: auto;
+}
+
+@media (min-width: 640px) {
+  .container-page {
+    width: min(100% - 5rem, var(--container-page));
+  }
+
+  .container-hero {
+    width: min(100% - 5rem, var(--container-hero));
+  }
+}
+
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(1.75rem);
+  transition:
+    opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+[data-reveal][data-in-view] {
+  opacity: 1;
+  transform: none;
+}
+
+.plans-grid > * {
+  opacity: 0;
+  transition:
+    opacity 0.5s ease-out,
+    transform 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.4s;
+}
+
+.plans-grid[data-open] > * {
+  opacity: 1;
+  transform: none;
+}
+
+@media (max-width: 1023.98px) {
+  .plans-grid:not([data-open]) > * {
+    transform: translateY(1.75rem);
+  }
+}
+
+@media (min-width: 1024px) {
+  .plans-grid:not([data-open]) > :first-child {
+    transform: translateX(108%) scale(0.92);
+  }
+
+  .plans-grid:not([data-open]) > :nth-child(2) {
+    transform: scale(0.92);
+  }
+
+  .plans-grid:not([data-open]) > :last-child {
+    transform: translateX(-108%) scale(0.92);
+  }
+}
+
+.card-swing {
+  transform: rotate(var(--card-tilt));
+  transform-origin: top center;
+  animation: card-swing 10s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes card-swing {
+  0%,
+  12%,
+  100% {
+    transform: rotate(var(--card-tilt));
+  }
+  2.5% {
+    transform: rotate(calc(var(--card-tilt) - 5deg));
+  }
+  5% {
+    transform: rotate(calc(var(--card-tilt) + 4deg));
+  }
+  7.5% {
+    transform: rotate(calc(var(--card-tilt) - 2deg));
+  }
+  10% {
+    transform: rotate(calc(var(--card-tilt) + 1deg));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  [data-reveal],
+  [data-reveal][data-in-view],
+  .plans-grid > *,
+  .plans-grid:not([data-open]) > * {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .card-swing {
+    animation: none;
+  }
+}
