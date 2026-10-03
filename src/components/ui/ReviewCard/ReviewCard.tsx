@@ -11,23 +11,28 @@ export function ReviewCard({ review, className }: ReviewCardProps) {
   return (
     <article
       className={cn(
-        "flex h-full flex-col rounded-[var(--card-radius)] bg-letmor-cream p-[clamp(1.5rem,2.4vw,2.25rem)]",
+        "flex h-[clamp(22rem,30vw,26rem)] flex-col rounded-[var(--card-radius)] bg-letmor-cream p-[clamp(1.5rem,2.4vw,2.25rem)]",
         className,
       )}
     >
-      <div className="flex gap-1 text-letmor-gold">
+      <div className="flex shrink-0 gap-1 text-letmor-gold">
         {Array.from({ length: review.rating }, (_, index) => (
           <StarIcon key={index} className="size-4" />
         ))}
       </div>
 
-      <p className="mt-5 font-subtitle text-lead text-letmor-navy/90">
-        &ldquo;{review.quote}&rdquo;
-      </p>
+      <div
+        tabIndex={0}
+        className="mt-5 min-h-0 flex-1 overflow-y-auto overscroll-y-contain pr-2 [scrollbar-color:rgba(35,49,73,0.3)_transparent] [scrollbar-width:thin]"
+      >
+        <p className="text-justify font-subtitle text-lead text-letmor-navy/90 hyphens-auto">
+          &ldquo;{review.quote}&rdquo;
+        </p>
+      </div>
 
-      <span className="my-6 block h-px w-full bg-letmor-navy/15" />
+      <span className="my-6 block h-px w-full shrink-0 bg-letmor-navy/15" />
 
-      <div className="mt-auto">
+      <div className="shrink-0">
         <p className="font-subtitle text-body text-letmor-navy">{review.name}</p>
         <p className="font-subtitle text-body text-letmor-navy/55">{review.role}</p>
       </div>

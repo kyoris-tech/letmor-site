@@ -79,9 +79,9 @@ export interface Project {
   images: { src: string; alt: string }[];
 }
 
-const projectImages = (name: string, files: string[]) =>
-  files.map((file, index) => ({
-    src: `/images/portfolio/${file}`,
+const projectImages = (name: string, folder: string, count: number) =>
+  Array.from({ length: count }, (_, index) => ({
+    src: `/images/portfolio/${folder}/${String(index + 1).padStart(2, "0")}.jpg`,
     alt: `${name} — imagem ${index + 1}`,
   }));
 
@@ -98,154 +98,210 @@ export const portfolio: SectionCopy & {
   ],
   filters: [
     { key: "todos", label: "Todos" },
-    { key: "branding", label: "Branding" },
+    { key: "identidade-visual", label: "Identidade Visual" },
     { key: "design", label: "Design" },
-    { key: "audiovisual", label: "Audiovisual" },
+    { key: "social-media", label: "Social Media" },
+    { key: "fotografia", label: "Fotografia" },
+    { key: "storymaker", label: "Storymaker" },
   ],
   projects: [
     {
-      id: "honeybee",
+      id: "honeybee-identidade",
       name: "Honeybee",
-      categories: ["branding", "design"],
-      type: "Branding",
-      subtype: "Design",
+      categories: ["identidade-visual"],
+      type: "Identidade Visual",
+      subtype: "Eventos e recreação",
       description:
-        "Identidade e desdobramentos de marca para a Honeybee, do conceito às aplicações digitais.",
-      tags: ["Identidade visual", "Design de conteúdo"],
-      images: projectImages("Honeybee", [
-        "branding/honeybee-1.jpg",
-        "branding/honeybee-2.jpg",
-        "branding/honeybee-3.jpg",
-        "branding/honeybee-4.jpg",
-        "design/honeybee-1.jpg",
-      ]),
+        "Identidade visual da Honeybee, empresa de eventos e recreação: logotipo, paleta e aplicações como a papelaria.",
+      tags: ["Logotipo", "Identidade visual", "Papelaria"],
+      images: projectImages("Honeybee", "identidade-visual/honeybee", 5),
     },
     {
-      id: "honeybee-audiovisual",
-      name: "Honeybee Audiovisual",
-      categories: ["audiovisual"],
-      type: "Audiovisual",
-      subtype: "Cobertura",
+      id: "psicogame",
+      name: "Psicogame",
+      categories: ["identidade-visual"],
+      type: "Identidade Visual",
+      subtype: "Psicologia",
       description:
-        "Registro audiovisual da Honeybee: cobertura de produção e bastidores em imagens.",
-      tags: ["Cobertura", "Fotografia", "Edição"],
-      images: projectImages("Honeybee Audiovisual", [
-        ...Array.from(
-          { length: 10 },
-          (_, i) => `audiovisual/honeybee-${i + 1}.jpg`,
-        ),
-        ...Array.from(
-          { length: 7 },
-          (_, i) => `audiovisual/honeybee-projeto-${i + 1}.jpg`,
-        ),
-      ]),
-    },
-    {
-      id: "letmor",
-      name: "LetMor",
-      categories: ["branding"],
-      type: "Branding",
-      subtype: "Identidade",
-      description:
-        "Construção da identidade da própria LetMor: marca, sistema visual e diretrizes verbais.",
-      tags: ["Naming", "Identidade visual", "Diretrizes verbais"],
-      images: projectImages("LetMor", [
-        "branding/letmor-1.jpg",
-        "branding/letmor-2.jpg",
-      ]),
-    },
-    {
-      id: "glauber",
-      name: "Glauber Psicologia",
-      categories: ["branding"],
-      type: "Branding",
-      subtype: "Clínica",
-      description:
-        "Identidade e materiais para a clínica de psicologia Glauber, unindo acolhimento e clareza.",
-      tags: ["Identidade visual", "Material impresso"],
-      images: projectImages("Glauber Psicologia", ["branding/glauber-1.jpg"]),
+        "Identidade visual do Psicogame, projeto do psicólogo André Whitaker, com logotipo em variações de cor e aplicações.",
+      tags: ["Logotipo", "Identidade visual", "Aplicações"],
+      images: projectImages("Psicogame", "identidade-visual/psicogame", 5),
     },
     {
       id: "vertco",
       name: "Vertco",
-      categories: ["branding"],
-      type: "Branding",
-      subtype: "Identidade",
+      categories: ["identidade-visual"],
+      type: "Identidade Visual",
+      subtype: "Sustentabilidade",
       description:
-        "Identidade visual e sistema de marca para a Vertco, com foco em consistência e escala.",
-      tags: ["Identidade visual", "Sistema de marca"],
-      images: projectImages("Vertco", [
-        "branding/vertco-1.jpg",
-        "branding/vertco-2.jpg",
-        "branding/vertco-3.jpg",
-      ]),
-    },
-    {
-      id: "psi-amanda-lemos",
-      name: "Psi Amanda Lemos",
-      categories: ["design"],
-      type: "Design",
-      subtype: "Social",
-      description:
-        "Presença visual e conteúdo para a psicóloga Amanda Lemos nas redes sociais.",
-      tags: ["Social media", "Design de conteúdo"],
-      images: projectImages("Psi Amanda Lemos", [
-        "design/psi-amanda-lemos-1.jpg",
-        "design/psi-amanda-lemos-2.jpg",
-      ]),
+        "Identidade visual da Vertco, marca de sustentabilidade: logomarca, ícone e aplicações em papelaria e digital.",
+      tags: ["Logomarca", "Identidade visual", "Papelaria"],
+      images: projectImages("Vertco", "identidade-visual/vertco", 4),
     },
     {
       id: "clube-das-multis",
       name: "Clube das Multis",
       categories: ["design"],
       type: "Design",
-      subtype: "Social",
+      subtype: "Design digital",
       description:
-        "Linha visual e design de conteúdo para a comunidade Clube das Multis.",
-      tags: ["Social media", "Direção de arte"],
-      images: projectImages("Clube das Multis", [
-        "design/clube-das-multis-1.jpg",
-      ]),
+        "Peças de design digital para o Clube das Multis, com linha visual própria para as redes sociais.",
+      tags: ["Design digital", "Direção de arte"],
+      images: projectImages("Clube das Multis", "design/clube-das-multis", 3),
     },
     {
-      id: "clube-vinho",
-      name: "Clube Vinho",
+      id: "psicologa-amanda-lemos",
+      name: "Psicóloga Amanda Lemos",
       categories: ["design"],
       type: "Design",
-      subtype: "Rótulo",
+      subtype: "Carrosséis",
       description:
-        "Identidade e peças para o Clube Vinho, do conceito visual à comunicação.",
-      tags: ["Identidade visual", "Design de conteúdo"],
-      images: projectImages("Clube Vinho", ["design/clube-vinho-1.jpg"]),
+        "Carrosséis e posts para a psicóloga Amanda Lemos, com conteúdo educativo e identidade própria.",
+      tags: ["Carrossel", "Design de conteúdo"],
+      images: projectImages("Psicóloga Amanda Lemos", "design/psicologa-amanda-lemos", 11),
     },
     {
-      id: "psicogames",
-      name: "Psicogames",
+      id: "psicologo-andre",
+      name: "Psicólogo André",
       categories: ["design"],
       type: "Design",
-      subtype: "Campanha",
+      subtype: "Stories",
       description:
-        "Campanha e peças de divulgação do Psicogames para alcançar o público certo.",
-      tags: ["Campanha", "Design de conteúdo", "Direção de arte"],
-      images: projectImages("Psicogames", [
-        "design/psicogames-1.jpg",
-        "design/psicogames-2.jpg",
-        "design/psicogames-3.jpg",
-      ]),
+        "Modelos de stories para o psicólogo André Whitaker, em linguagem de jogo de cartas.",
+      tags: ["Stories", "Design digital"],
+      images: projectImages("Psicólogo André", "design/psicologo-andre", 3),
+    },
+    {
+      id: "workshop-comunicacao-influente",
+      name: "Workshop Comunicação Influente",
+      categories: ["design"],
+      type: "Design",
+      subtype: "Posts",
+      description:
+        "Posts de divulgação do workshop Comunicação Influente.",
+      tags: ["Posts", "Divulgação"],
+      images: projectImages("Workshop Comunicação Influente", "design/workshop-comunicacao-influente", 2),
+    },
+    {
+      id: "papelaria",
+      name: "Papelaria",
+      categories: ["design"],
+      type: "Design",
+      subtype: "Impressos",
+      description:
+        "Cartões de visita e folhetos personalizados, prontos para impressão.",
+      tags: ["Cartão de visita", "Folheto", "Impressão"],
+      images: projectImages("Papelaria", "design/papelaria", 5),
+    },
+    {
+      id: "glauber-clinica",
+      name: "Glauber Clínica",
+      categories: ["social-media"],
+      type: "Social Media",
+      subtype: "Redes sociais",
+      description:
+        "Gestão de redes sociais da Glauber Clínica: linha visual e apresentação dos resultados do perfil.",
+      tags: ["Social media", "Resultados"],
+      images: projectImages("Glauber Clínica", "social-media/glauber-clinica", 3),
+    },
+    {
+      id: "honeybee-social",
+      name: "Honeybee",
+      categories: ["social-media"],
+      type: "Social Media",
+      subtype: "Redes sociais",
+      description:
+        "Gestão de redes sociais da Honeybee: linha visual, engajamento e crescimento do perfil.",
+      tags: ["Social media", "Engajamento"],
+      images: projectImages("Honeybee", "social-media/honeybee", 2),
+    },
+    {
+      id: "studio-jessica",
+      name: "Studio Jéssica",
+      categories: ["social-media"],
+      type: "Social Media",
+      subtype: "Redes sociais",
+      description:
+        "Gestão de redes sociais do Studio Jéssica: linha visual e crescimento de visitas ao perfil.",
+      tags: ["Social media", "Crescimento"],
+      images: projectImages("Studio Jéssica", "social-media/studio-jessica", 2),
+    },
+    {
+      id: "blase",
+      name: "Blasé",
+      categories: ["fotografia"],
+      type: "Fotografia",
+      subtype: "Ensaio",
+      description:
+        "Ensaio fotográfico para a Blasé, com fotos editadas e prontas para publicação.",
+      tags: ["Fotografia", "Ensaio", "Edição"],
+      images: projectImages("Blasé", "fotografia/blase", 15),
+    },
+    {
+      id: "honeybee-fotografia",
+      name: "Honeybee",
+      categories: ["fotografia"],
+      type: "Fotografia",
+      subtype: "Cobertura",
+      description:
+        "Registro fotográfico da Honeybee: bastidores e momentos da operação em imagens.",
+      tags: ["Fotografia", "Cobertura", "Edição"],
+      images: projectImages("Honeybee", "fotografia/honeybee", 10),
     },
     {
       id: "aniversario-amanda",
       name: "Aniversário Amanda",
-      categories: ["audiovisual"],
-      type: "Audiovisual",
-      subtype: "Evento",
+      categories: ["storymaker"],
+      type: "Storymaker",
+      subtype: "Aniversário",
       description:
-        "Registro audiovisual do aniversário da Amanda: cobertura completa do evento em imagens.",
-      tags: ["Cobertura de evento", "Fotografia", "Edição"],
-      images: projectImages(
-        "Aniversário Amanda",
-        Array.from({ length: 14 }, (_, i) => `audiovisual/aniversario-amanda-${i + 1}.jpg`),
-      ),
+        "Storymaker do aniversário da Amanda: cobertura completa do evento, com material editado e pronto para publicar.",
+      tags: ["Storymaker", "Cobertura de evento", "Edição"],
+      images: projectImages("Aniversário Amanda", "storymaker/aniversario-amanda", 15),
+    },
+    {
+      id: "aniversario-bruna",
+      name: "Aniversário Bruna",
+      categories: ["storymaker"],
+      type: "Storymaker",
+      subtype: "Aniversário",
+      description:
+        "Storymaker do aniversário da Bruna: cobertura do evento, com material editado e pronto para publicar.",
+      tags: ["Storymaker", "Cobertura de evento", "Edição"],
+      images: projectImages("Aniversário Bruna", "storymaker/aniversario-bruna", 10),
+    },
+    {
+      id: "honeybee-storymaker",
+      name: "Honeybee",
+      categories: ["storymaker"],
+      type: "Storymaker",
+      subtype: "Eventos",
+      description:
+        "Storymaker dos eventos da Honeybee: captação, edição e entrega de conteúdo pronto para as redes.",
+      tags: ["Storymaker", "Captação", "Edição"],
+      images: projectImages("Honeybee", "storymaker/honeybee", 14),
+    },
+    {
+      id: "nosco",
+      name: "Nosco",
+      categories: ["storymaker"],
+      type: "Storymaker",
+      subtype: "Restaurante",
+      description:
+        "Storymaker no restaurante Nosco: pratos, ambiente e pessoas em uma cobertura editada.",
+      tags: ["Storymaker", "Gastronomia", "Edição"],
+      images: projectImages("Nosco", "storymaker/nosco", 10),
+    },
+    {
+      id: "panqueca-e-cia",
+      name: "Panqueca e Cia",
+      categories: ["storymaker"],
+      type: "Storymaker",
+      subtype: "Restaurante",
+      description:
+        "Storymaker na Panqueca e Cia: pratos, ambiente e clima do restaurante em uma cobertura editada.",
+      tags: ["Storymaker", "Gastronomia", "Edição"],
+      images: projectImages("Panqueca e Cia", "storymaker/panqueca-e-cia", 14),
     },
   ],
 };
@@ -316,7 +372,7 @@ export const servicosDetalhes: ServiceDetail[] = [
     rail: "Conteúdo",
     name: "Social Media",
     photo: {
-      src: "/images/portfolio/design/psi-amanda-lemos-1.jpg",
+      src: "/images/portfolio/social-media/glauber-clinica/01.jpg",
       alt: "Social media — LetMor",
     },
     body: [
@@ -347,7 +403,7 @@ export const servicosDetalhes: ServiceDetail[] = [
     rail: "Marca",
     name: "Branding",
     photo: {
-      src: "/images/portfolio/branding/vertco-1.jpg",
+      src: "/images/portfolio/identidade-visual/psicogame/01.jpg",
       alt: "Branding — LetMor",
     },
     body: [
@@ -381,7 +437,7 @@ export const servicosDetalhes: ServiceDetail[] = [
     rail: "Gráfico",
     name: "Design",
     photo: {
-      src: "/images/portfolio/design/psicogames-1.jpg",
+      src: "/images/portfolio/design/psicologa-amanda-lemos/01.jpg",
       alt: "Design gráfico — LetMor",
     },
     body: [
@@ -425,7 +481,7 @@ export const servicosDetalhes: ServiceDetail[] = [
     rail: "Vídeo",
     name: "Audiovisual",
     photo: {
-      src: "/images/portfolio/audiovisual/honeybee-projeto-2.jpg",
+      src: "/images/portfolio/storymaker/honeybee/01.jpg",
       alt: "Audiovisual — LetMor",
     },
     body: [
@@ -471,7 +527,7 @@ export const servicosDetalhes: ServiceDetail[] = [
     name: "Estudo Mercadológico",
     nameLines: [[{ text: "Estudo" }], [{ text: "Mercadológico" }]],
     photo: {
-      src: "/images/portfolio/design/clube-das-multis-1.jpg",
+      src: "/images/portfolio/design/workshop-comunicacao-influente/01.jpg",
       alt: "Estudo mercadológico — LetMor",
     },
     body: [
@@ -515,35 +571,35 @@ export const servicos: SectionCopy & { services: Service[] } = {
       name: "Branding",
       description:
         "Naming, identidade visual, manual de marca e diretrizes verbais que ficam de pé.",
-      image: "/images/portfolio/branding/vertco-2.jpg",
+      image: "/images/portfolio/identidade-visual/vertco/01.jpg",
     },
     {
       id: "identidade-visual",
       name: "Identidade visual",
       description:
         "Sistema visual completo: logo, paleta, tipografia e aplicações prontas para escalar em qualquer canal.",
-      image: "/images/portfolio/branding/honeybee-1.jpg",
+      image: "/images/portfolio/identidade-visual/honeybee/01.jpg",
     },
     {
       id: "social-media",
       name: "Social media",
       description:
         "Estratégia de conteúdo e linha visual para redes, do planejamento à produção dos posts.",
-      image: "/images/portfolio/design/clube-vinho-1.jpg",
+      image: "/images/portfolio/social-media/studio-jessica/01.jpg",
     },
     {
       id: "campanhas",
       name: "Campanhas",
       description:
         "Conceito criativo e key visual desdobrados em peças on e offline para lançar sua marca no momento certo.",
-      image: "/images/portfolio/design/psicogames-3.jpg",
+      image: "/images/portfolio/design/clube-das-multis/01.jpg",
     },
     {
       id: "audiovisual",
       name: "Audiovisual",
       description:
         "Roteiro, direção e edição de vídeos que apresentam a marca ao público certo com ritmo e intenção.",
-      image: "/images/portfolio/audiovisual/honeybee-3.jpg",
+      image: "/images/portfolio/storymaker/nosco/01.jpg",
     },
   ],
 };
@@ -636,40 +692,44 @@ export const avaliacoes: SectionCopy & { testimonials: Testimonial[] } = {
   testimonials: [
     {
       quote:
-        "A LetMor não entrega arte — entrega visão. Em 6 meses dobramos o engajamento e mudamos o posicionamento.",
-      name: "Mariana Cortês",
-      role: "CEO · Empresa Fictícia",
+        "Tivemos uma experiência realmente excelente com a equipe da LetMor. Desde o primeiro contato, fomos atendidos com muita atenção, profissionalismo e cuidado em entender exatamente o que nós buscávamos para a identidade da nossa empresa. O processo de criação da logo foi muito bem conduzido, e a Ingrid teve muita sensibilidade para captar a essência da marca e transformar isso em um design elegante, moderno e bem pensado. Além da parte criativa, o atendimento foi sempre muito próximo e disponível, e em todas as etapas sentimos um cuidado genuíno com o resultado final e com a nossa satisfação como cliente. Sem dúvida, foi uma experiência muito positiva, com muita qualidade no trabalho entregue e, por isso, recomendamos o trabalho da LetMor para quem procura um serviço criativo, profissional e feito com muita dedicação.",
+      name: "Felipe Sartório",
+      role: "VertCo",
       rating: 5,
     },
     {
       quote:
-        "Apaixonei pela forma de pensar marca. É raro encontrar gente que une estratégia e estética sem perder a piada.",
-      name: "Beatriz Hara",
-      role: "Founder · Empresa Fictícia",
+        "Estou extremamente satisfeita com o trabalho da agência LETMOR! Desde o primeiro contato, fui atendida com profissionalismo, atenção e muito cuidado com os detalhes. A equipe é criativa, ágil e sempre disposta a entender exatamente o que eu precisava. Elas conseguiram traduzir minhas ideias em estratégias eficazes, com resultados visíveis em pouco tempo. A LETMOR realmente se importa com o sucesso dos clientes e entrega um serviço de altíssimo nível. Recomendo de olhos fechados para quem busca uma parceria de confiança e resultados reais no marketing. Parabéns pelo excelente trabalho!",
+      name: "Talita Rocha",
+      role: "Honeybee Eventos e Recreação",
       rating: 5,
     },
     {
       quote:
-        "Chegaram com perguntas melhores que as nossas respostas. O rebranding destravou o time comercial em poucas semanas.",
-      name: "Rafael Nunes",
-      role: "Head de Marketing · Empresa Fictícia",
+        "Sou muito grata à equipe da Letmor, que com qualidade e profissionalismo elevaram a criação de conteúdo da minha clínica, trazendo a sofisticação e qualidade dos nossos serviços para o digital, além da campanha que realizaram conosco do workshop comunicação influente que nos posicionaram e performaram muito bem nas redes sociais. Indico de olhos fechados ❤️",
+      name: "Edna Glauber",
+      role: "Glauber Clínica",
       rating: 5,
     },
     {
       quote:
-        "Processo redondo do começo ao fim. Entregas no prazo e uma marca que finalmente parece a gente.",
-      name: "Carla Meireles",
-      role: "Sócia · Empresa Fictícia",
+        "Alta qualidade em nossos brainstormings, entederam muito bem minha marca e personalidade.",
+      name: "Herick Sena",
+      role: "Chef de cozinha",
       rating: 5,
     },
     {
       quote:
-        "Investimento que se pagou rápido. A consistência visual elevou a percepção de valor do nosso produto.",
-      name: "Tiago Prado",
-      role: "Diretor de Produto · Empresa Fictícia",
+        "Super recomendo a LetMor! Equipe criativa, atenciosa e comprometida com resultados. Meu negócio cresceu visivelmente com as estratégias deles!",
+      name: "Naiara Pereira de Sousa",
+      role: "Ótica Bline",
       rating: 5,
     },
   ],
+  link: {
+    label: "veja todas as avaliações no Google",
+    href: "https://www.google.com/maps/place/LetMor+-+Ag%C3%AAncia+de+Marketing+e+Publicidade/@-23.6824124,-46.5952992,17z/data=!4m8!3m7!1s0x8cf11dd655b6650d:0xc5bb255bb9e9be96!8m2!3d-23.6824124!4d-46.5952992!9m1!1b1!16s%2Fg%2F11mdh0ct9k?hl=pt-BR",
+  },
 };
 
 export const contato: SectionCopy & {

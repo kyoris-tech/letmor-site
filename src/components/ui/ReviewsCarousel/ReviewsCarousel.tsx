@@ -56,7 +56,7 @@ export function ReviewsCarousel({ reviews }: ReviewsCarouselProps) {
         {reviews.map((review, index) => (
           <li
             key={`${review.name}-${index}`}
-            className="w-[clamp(16rem,80vw,20rem)] shrink-0 snap-start lg:w-[calc((100%-3rem)/3)]"
+            className="w-[clamp(17rem,84vw,22rem)] shrink-0 snap-start lg:w-[25rem]"
           >
             <ReviewCard review={review} />
           </li>
