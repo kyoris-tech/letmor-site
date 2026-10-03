@@ -2,9 +2,10 @@ import type { ComponentType } from "react";
 import Image from "next/image";
 import { cn } from "@/lib/cn";
 import { SwingCard } from "@/components/ui/SwingCard";
+import { Tag } from "@/components/ui/Tag";
 import {
   ChatIcon,
-  MegaphoneIcon,
+  CircleCheckIcon,
   PaletteIcon,
   PlayIcon,
   TargetIcon,
@@ -20,9 +21,9 @@ interface ServiceCardProps {
 
 const iconById: Record<string, ComponentType<IconProps>> = {
   branding: TargetIcon,
-  "identidade-visual": PaletteIcon,
+  "estudo-mercadologico": CircleCheckIcon,
+  design: PaletteIcon,
   "social-media": ChatIcon,
-  campanhas: MegaphoneIcon,
   audiovisual: PlayIcon,
 };
 
@@ -56,6 +57,15 @@ export function ServiceCard({ service, active = false, className }: ServiceCardP
         <p className="mt-3 max-w-[34rem] font-subtitle text-body text-letmor-navy/80">
           {service.description}
         </p>
+        {service.items && (
+          <ul className="mt-5 flex flex-wrap gap-2">
+            {service.items.map((item) => (
+              <li key={item}>
+                <Tag>{item}</Tag>
+              </li>
+            ))}
+          </ul>
+        )}
       </SwingCard>
 
       <SwingCard

@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
-import { Glow } from "@/components/ui/Glow";
 import { Headline } from "@/components/ui/Headline";
 import { Reveal } from "@/components/ui/Reveal";
 import { Text } from "@/components/ui/Text";
@@ -39,7 +38,6 @@ export function ServicosHero() {
       className="relative flex min-h-svh items-center bg-letmor-navy pt-[var(--hero-nav-clear)] pb-12 lg:overflow-hidden"
     >
       <Container size="hero" className="relative">
-        <Glow className="left-[var(--glow-left)] top-[var(--glow-top)] hidden lg:block" />
 
         <div className="grid gap-x-[clamp(2.5rem,6vw,5.5rem)] lg:grid-cols-[minmax(0,1fr)_18rem]">
           <div className="lg:col-start-1 lg:row-start-1">
