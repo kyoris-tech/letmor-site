@@ -5,7 +5,8 @@ import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ServiceCard } from "@/components/ui/ServiceCard";
 import { StackCards } from "@/components/ui/StackCards";
-import { servicos } from "./hotwords";
+import { TextLink } from "@/components/ui/TextLink";
+import { planos, servicos } from "./hotwords";
 
 export function Servicos() {
   return (
@@ -33,6 +34,12 @@ export function Servicos() {
           ),
         }))}
       />
+
+      {planos.link && (
+        <div className="mt-[clamp(2.5rem,5vw,4rem)]">
+          <TextLink href={planos.link.href}>{planos.link.label}</TextLink>
+        </div>
+      )}
     </Section>
   );
 }

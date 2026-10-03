@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
-import { Glow } from "@/components/ui/Glow";
 import { Headline } from "@/components/ui/Headline";
 import { Reveal } from "@/components/ui/Reveal";
 import { TiltedCard } from "@/components/ui/TiltedCard";
@@ -23,7 +22,6 @@ export function Hero() {
       className="relative flex min-h-svh items-center bg-letmor-navy pt-[var(--hero-nav-clear)] pb-12 lg:overflow-hidden"
     >
       <Container size="hero" className="relative">
-        <Glow className="left-[var(--glow-left)] top-[var(--glow-top)] hidden lg:block" />
 
         <TiltedCard
           photo={heroPhoto}

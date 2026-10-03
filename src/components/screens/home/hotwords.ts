@@ -314,9 +314,9 @@ export const servicosHero: SectionCopy & {
   eyebrow: "serviços",
   headline: [
     [{ text: "Três frentes," }],
-    [{ text: "um mesmo" }],
+    [{ text: "o mesmo" }],
     [{ text: "compromisso:", accent: true }],
-    [{ text: "fazer sua" }],
+    [{ text: "Fazer sua" }],
     [{ text: "marca" }, { text: "crescer.", accent: true }],
   ],
   body: [
@@ -376,8 +376,8 @@ export const servicosDetalhes: ServiceDetail[] = [
       alt: "Social media — LetMor",
     },
     body: [
-      "Cuidamos da presença digital da sua marca de forma estratégica, transformando suas redes sociais em canais de relacionamento, posicionamento e geração de resultados.",
-      "Planejamos, criamos, publicamos e acompanhamos cada etapa para garantir um crescimento consistente e alinhado aos seus objetivos.",
+      "Cuidamos da presença digital da sua marca com estratégia, posicionamento e conteúdo pensado para cada rede social. Transformamos suas redes em canais de conexão com o público e fortalecimento da marca.",
+      "Do planejamento à criação, publicação e análise de resultados, acompanhamos cada etapa para construir uma presença digital consistente, relevante e alinhada aos objetivos do negócio.",
     ],
     deliverablesLabel: "O que entregamos",
     deliverables: [
@@ -390,7 +390,7 @@ export const servicosDetalhes: ServiceDetail[] = [
       "Reuniões mensais com análise de resultados e definição de novas estratégias",
     ],
     platformsLabel: "Plataformas",
-    platforms: ["LinkedIn", "Instagram", "Facebook", "TikTok", "Threads"],
+    platforms: ["LinkedIn", "Instagram", "Facebook", "TikTok", "Pinterest"],
     offers: [{ priceLabel: "A partir de", price: "R$ 1.900,00" }],
     background: "cream",
     cardTone: "cream",
@@ -417,14 +417,10 @@ export const servicosDetalhes: ServiceDetail[] = [
       "Paleta de cores e tipografia",
       "Aplicações da marca",
       "Manual de identidade visual",
-      "Análise estratégica de perfil para redes sociais",
-      "Bio otimizada e sugestões de melhorias",
-      "Organização de destaques e capas",
     ],
     offers: [
       { name: "Logotipo", priceLabel: "A partir de", price: "R$ 1.200,00" },
       { name: "Identidade Visual", priceLabel: "A partir de", price: "R$ 2.000,00" },
-      { name: "Análise de Perfil", priceLabel: "A partir de", price: "R$ 450,00" },
     ],
     background: "light",
     cardTone: "navy",
@@ -485,15 +481,15 @@ export const servicosDetalhes: ServiceDetail[] = [
       alt: "Audiovisual — LetMor",
     },
     body: [
-      "Transformamos momentos e ideias em conteúdos que aproximam sua marca do público. Produzimos vídeos dinâmicos e autênticos para fortalecer sua presença digital, destacar seus eventos e gerar mais engajamento nas redes sociais.",
-      "Da captação à edição, entregamos materiais prontos para publicação, permitindo que você foque no crescimento do seu negócio.",
+      "A captação de conteúdo consiste na produção de fotos e vídeos da sua marca, produtos, serviços, espaços e momentos importantes, gerando materiais estratégicos e versáteis para feed, Reels e Stories.",
+      "O Storymaker é focado na cobertura de eventos, ações e experiências em tempo real, com registros espontâneos e dinâmicos que mostram os acontecimentos em tempo real.",
     ],
     deliverablesLabel: "O que entregamos",
     deliverables: [
       "Cobertura de eventos",
       "Captação de conteúdo para redes sociais",
       "Produção de vídeos institucionais e promocionais",
-      "Edição profissional com trilha sonora, filtros e identidade visual",
+      "Edição profissional com trilha sonora e filtros",
       "Vídeos de melhores momentos (highlights)",
       "Conteúdo otimizado para Instagram, TikTok, LinkedIn e outras plataformas",
     ],
@@ -514,7 +510,7 @@ export const servicosDetalhes: ServiceDetail[] = [
         ],
       },
     ],
-    note: "Todo o material é entregue editado, com música, tratamento de imagem e identidade visual, pronto para publicação.",
+    note: "Todo o material é entregue editado, com música e tratamento de imagem, pronto para publicação.",
     background: "light",
     cardTone: "gold",
     cardPosition: "end",
@@ -531,8 +527,7 @@ export const servicosDetalhes: ServiceDetail[] = [
       alt: "Estudo mercadológico — LetMor",
     },
     body: [
-      "Tomamos decisões com base em dados, não em suposições. Realizamos uma análise completa do mercado, da concorrência e do comportamento do público para identificar oportunidades e definir estratégias que impulsionem o crescimento da sua marca.",
-      "Ao final do estudo, entregamos um relatório estratégico com insights práticos para orientar o posicionamento e as ações do seu negócio.",
+      "O Estudo Mercadológico é uma análise estratégica do mercado, considerando cenário e tendências, concorrência, público-alvo e comportamento do consumidor. Envolve pesquisa de campo, análise de posicionamento e diferenciais, além da análise SWOT. A partir desses dados, entregamos um diagnóstico com os principais insights e direcionamentos estratégicos em um material personalizado para apoiar decisões mais assertivas.",
     ],
     deliverablesLabel: "O que entregamos",
     deliverables: [
@@ -556,6 +551,7 @@ export interface Service {
   name: string;
   description: string;
   image: string;
+  items?: string[];
 }
 
 export const servicos: SectionCopy & { services: Service[] } = {
@@ -574,32 +570,35 @@ export const servicos: SectionCopy & { services: Service[] } = {
       image: "/images/portfolio/identidade-visual/vertco/01.jpg",
     },
     {
-      id: "identidade-visual",
-      name: "Identidade visual",
+      id: "estudo-mercadologico",
+      name: "Estudo Mercadológico",
       description:
-        "Sistema visual completo: logo, paleta, tipografia e aplicações prontas para escalar em qualquer canal.",
-      image: "/images/portfolio/identidade-visual/honeybee/01.jpg",
+        "Análise estratégica de mercado, concorrência, público-alvo e comportamento do consumidor, com diagnóstico e direcionamentos para decisões mais assertivas.",
+      image: "/images/portfolio/design/workshop-comunicacao-influente/01.jpg",
+    },
+    {
+      id: "design",
+      name: "Design",
+      description:
+        "Materiais gráficos que fortalecem a identidade da sua marca, no ambiente digital e no impresso.",
+      image: "/images/portfolio/design/psicologa-amanda-lemos/01.jpg",
+      items: ["Design Gráfico", "Papelaria", "Digital"],
     },
     {
       id: "social-media",
-      name: "Social media",
+      name: "Gestão de Mídias Sociais",
       description:
-        "Estratégia de conteúdo e linha visual para redes, do planejamento à produção dos posts.",
+        "Gestão estratégica de mídias sociais com foco em posicionamento, conteúdo e resultados.",
       image: "/images/portfolio/social-media/studio-jessica/01.jpg",
-    },
-    {
-      id: "campanhas",
-      name: "Campanhas",
-      description:
-        "Conceito criativo e key visual desdobrados em peças on e offline para lançar sua marca no momento certo.",
-      image: "/images/portfolio/design/clube-das-multis/01.jpg",
+      items: ["Calendário Editorial", "Análise de Perfil"],
     },
     {
       id: "audiovisual",
       name: "Audiovisual",
       description:
-        "Roteiro, direção e edição de vídeos que apresentam a marca ao público certo com ritmo e intenção.",
+        "Produção de fotos e vídeos da sua marca e cobertura de eventos, prontos para feed, Reels e Stories.",
       image: "/images/portfolio/storymaker/nosco/01.jpg",
+      items: ["Storymaker", "Captação de Conteúdo", "Fotografia"],
     },
   ],
 };
@@ -614,6 +613,7 @@ export interface Plan {
   cta: string;
   highlight?: boolean;
   badge?: string;
+  featuresLabel?: string;
 }
 
 export const planos: SectionCopy & { plans: Plan[] } = {
@@ -630,13 +630,14 @@ export const planos: SectionCopy & { plans: Plan[] } = {
       price: "R$ 1.000",
       period: "/mês",
       description:
-        "Gestão completa de redes sociais com direção estratégica: posicionamento, calendário de conteúdo e peças no tom da marca, com otimização contínua por métricas.",
+        "Gestão estratégica de mídias sociais com foco em posicionamento, conteúdo e resultados, incluindo planejamento, criação, métricas e relatório mensal via WhatsApp.",
+      featuresLabel: "O pacote contempla:",
       features: [
         "Gestão de redes sociais",
         "Posicionamento da marca",
-        "Criação de conteúdo",
-        "Análise de métricas",
-        "Relatório mensal no WhatsApp",
+        "Planejamento de conteúdo",
+        "Criação de até 8 artes mensais",
+        "Estruturação do perfil",
       ],
       cta: "Começar agora",
     },
@@ -646,12 +647,12 @@ export const planos: SectionCopy & { plans: Plan[] } = {
       price: "R$ 1.900",
       period: "/mês",
       description:
-        "Tudo do Start com uma camada de inteligência de mercado: estudo do setor, estratégia de conteúdo e reunião mensal para ler os dados e definir os próximos movimentos.",
+        "Tudo do Start + estudo mercadológico, posicionamento estratégico, conteúdo com foco em estratégia sem limite de posts, acompanhamento e melhoria dos resultados, além de reuniões mensais para decisões baseadas em dados.",
       features: [
-        "Tudo do Social Start",
-        "Estudo de mercado",
+        "Tudo do Start +",
+        "Estudo mercadológico",
         "Estratégia de conteúdo",
-        "Reunião mensal de análise e direção",
+        "Reunião mensal de análise e direcionamento",
       ],
       cta: "Começar agora",
       highlight: true,
@@ -663,11 +664,11 @@ export const planos: SectionCopy & { plans: Plan[] } = {
       price: "R$ 3.200",
       period: "/mês",
       description:
-        "Tudo do Estratégico com captação de conteúdo inclusa e gestão de duas redes sociais, cada uma com estratégia própria.",
+        "Tudo do Estratégico + captação de conteúdo inclusa e gestão de duas redes sociais, com estratégias distintas e direcionadas para cada plataforma.",
       features: [
-        "Tudo do Social Estratégico",
+        "Tudo do Estratégico +",
         "Captação de conteúdo",
-        "2 redes sociais com estratégias próprias",
+        "Gestão de 2 redes sociais com estratégias únicas",
       ],
       cta: "Começar agora",
     },

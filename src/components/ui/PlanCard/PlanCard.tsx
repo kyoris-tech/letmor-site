@@ -69,6 +69,17 @@ export function PlanCard({ plan, className }: PlanCardProps) {
         )}
       />
 
+      {plan.featuresLabel && (
+        <p
+          className={cn(
+            "mb-4 font-sans text-action-sm font-bold",
+            highlight ? "text-letmor-cream-light" : "text-letmor-navy",
+          )}
+        >
+          {plan.featuresLabel}
+        </p>
+      )}
+
       <ul className="flex flex-1 flex-col gap-3">
         {plan.features.map((feature, index) => (
           <li
